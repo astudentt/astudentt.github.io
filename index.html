@@ -359,7 +359,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-01-04 16:05:46" itemprop="dateModified" datetime="2019-01-04T16:05:46+08:00">2019-01-04</time>
+                <time title="Modified: 2019-01-04 16:12:11" itemprop="dateModified" datetime="2019-01-04T16:12:11+08:00">2019-01-04</time>
               
             
           </span>
@@ -394,12 +394,19 @@
       
         
           
-            <p>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a><br>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
-<ol>
-<li>常用命令<br>1） git log<blockquote>
-<p>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。<br>2） git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。<br>3）git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。<br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br>$ git status<br>On branch master<br>Untracked files:<br>(use “git add …” to include in what will be committed)<br>a.txt<br>nothing added to commit but untracked files present (use “git add” to track)<br>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。<br>4）git add<br>git中有两个概念是很重要，工作区和暂存区，工作区（Working Directory），工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库（不要轻易修改）。git add把文件添加进去，实际上就是把文件修改添加到暂存区，暂存区会将所有的文件存起来，然后我们再通过git commit 命令一次性提交暂存区的所有修改，并提交到分支。<br>5）git commit<br>提交语句，一次性提交暂存区的所有修改，并提交到分支。在你修改文件之后，直接执行git commit语句进行提交。<br>6）git push<br>git push origin master把本地库的所有内容推送到远程库上，这样你们一起工作的朋友就可以在master分支看到你提交的内容了。如果你需要推送其他分支的话只要将master分支改成你要推送的分支即可， git push origin [branchname]。<br>7）git pull<br>git push origin master拉取远程库上的master分支到本地，在开发中每次开发之前最好执行一次此语句，保证最新的版本内容，以避免产生不必要的冲突。如果你需要拉取其他分支的话只要将master分支改成你要拉取的分支即可， git pull origin [branchname]。<br>8）git clone<br>在我们看博客的时候，博主们很喜欢，让你下载他们的源码来自己试验，你可能经常看到git clone语句，在词语后加入相应的地址，就可以要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。<br>9）git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。<br>$ git branch<br>master<br>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d<br>10）git checkout<br>git checkout 可以用来对不同的分支切换，git checkout master就是切换回master分支，checkout在合并分支中被频繁使用。<br>11）git merge<br>git merge命令用于合并指定分支到当前分支。因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。<br>这些就是一些常用的git语句，掌握好这些命令，就可以熟练运用git了。如果你对命令不太熟悉，你也可以安装图形化工具来管理哦。</p>
-</blockquote>
-</li>
+            <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
+<li>git log<br>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</li>
+<li>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
+<li>git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。<br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br>$ git status<br>On branch master<br>Untracked files:<br>(use “git add …” to include in what will be committed)<br>a.txt<br>nothing added to commit but untracked files present (use “git add” to track)<br>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。</li>
+<li>git add<br>git中有两个概念是很重要，工作区和暂存区，工作区（Working Directory），工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库（不要轻易修改）。git add把文件添加进去，实际上就是把文件修改添加到暂存区，暂存区会将所有的文件存起来，然后我们再通过git commit 命令一次性提交暂存区的所有修改，并提交到分支。</li>
+<li>git commit<br>提交语句，一次性提交暂存区的所有修改，并提交到分支。在你修改文件之后，直接执行git commit语句进行提交。</li>
+<li>git push<br>git push origin master把本地库的所有内容推送到远程库上，这样你们一起工作的朋友就可以在master分支看到你提交的内容了。如果你需要推送其他分支的话只要将master分支改成你要推送的分支即可， git push origin [branchname]。</li>
+<li>git pull<br>git push origin master拉取远程库上的master分支到本地，在开发中每次开发之前最好执行一次此语句，保证最新的版本内容，以避免产生不必要的冲突。如果你需要拉取其他分支的话只要将master分支改成你要拉取的分支即可， git pull origin [branchname]。</li>
+<li>git clone<br>在我们看博客的时候，博主们很喜欢，让你下载他们的源码来自己试验，你可能经常看到git clone语句，在词语后加入相应的地址，就可以要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</li>
+<li>git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。<br>$ git branch<br>master<br>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d</li>
+<li>git checkout<br>git checkout 可以用来对不同的分支切换，git checkout master就是切换回master分支，checkout在合并分支中被频繁使用。</li>
+<li>git merge<br>git merge命令用于合并指定分支到当前分支。因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。<br>这些就是一些常用的git语句，掌握好这些命令，就可以熟练运用git了。如果你对命令不太熟悉，你也可以安装图形化工具来管理哦。</li>
 </ol>
 <hr>
 <p>cr.tanym</p>
