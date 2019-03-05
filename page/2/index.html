@@ -104,24 +104,20 @@
 
 
 
-  <meta name="description" content="前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？ px单位px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。特点：  IE无法调整那些使用px作为单位的字体大小； 国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位； Firef">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS单位 px pt em和rem 之间的区别">
-<meta property="og:url" content="http://yoursite.com/2017/03/06/css-px-pt/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="小 T a n g？ 爱生活～～～">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-<meta property="og:description" content="前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？ px单位px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。特点：  IE无法调整那些使用px作为单位的字体大小； 国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位； Firef">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-26T07:26:16.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS单位 px pt em和rem 之间的区别">
-<meta name="twitter:description" content="前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？ px单位px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。特点：  IE无法调整那些使用px作为单位的字体大小； 国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位； Firef">
+<meta name="twitter:title" content="小 T a n g？ 爱生活～～～">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/06/css-px-pt/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
@@ -131,7 +127,7 @@
   };
 </script>
 
-  <title>CSS单位 px pt em和rem 之间的区别 | 小 T a n g？ 爱生活～～～</title>
+  <title>小 T a n g？ 爱生活～～～</title>
   
 
 
@@ -179,7 +175,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -283,9 +280,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -300,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/css-px-pt/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/phone1px/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tan y m">
@@ -317,8 +314,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS单位 px pt em和rem 之间的区别
-
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/06/phone1px/" class="post-title-link" itemprop="url">移动端1px实现</a>
               
             
           </h1>
@@ -360,7 +359,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-26 15:26:16" itemprop="dateModified" datetime="2018-12-26T15:26:16+08:00">2018-12-26</time>
+                <time title="Modified: 2019-03-01 15:52:48" itemprop="dateModified" datetime="2019-03-01T15:52:48+08:00">2019-03-01</time>
               
             
           </span>
@@ -393,23 +392,18 @@
       
 
       
-        <p>前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？</p>
-<h2 id="px单位"><a href="#px单位" class="headerlink" title="px单位"></a>px单位</h2><p>px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>特点：</p>
-<ul>
-<li>IE无法调整那些使用px作为单位的字体大小；</li>
-<li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
-<li>Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。</li>
-</ul>
-<h2 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h2><p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>EM特点</p>
-<ul>
-<li>em的值并不是固定的；</li>
-<li>em会继承父级元素的字体大小。并且对自身显示效果有影响</li>
-</ul>
-<p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
-<h2 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h2><p>em是CSS3新增的一个相对单位（root em，根em），使用rem为元素设定字体大小时，是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：<br><code>p {font-size:14px; font-size:.875rem;}</code><br>注意： 你可以根据自身的需求决定你的单位属性，如果要考虑兼容性，可以使用px,或者两者同时使用。</p>
+        
+          
+            <p>移动端开发过程中，不可避免的会遇到1px的实现问题.那么这个1px是什么问题呢？我简单的说一下，移动端兼容过程中ios系统是很重要的一部分，retina屏幕 大家也应该有所了解， 1px变粗的原因呢就是：viewport的设置和屏幕物理分辨率是按比例而不是相同的. 移动端window对象有个devicePixelRatio属性, 它表示设备物理像素和css像素的比例, 在retina屏的iphone手机上, 这个值为2或3, css里写的1px长度映射到物理像素上就有2px或3px那么长.下面我们就说一下怎样实现1px像素。现在的实现方式有很多种，我们来列举一些</p>
+<h2 id="1-ios-8-0以上支持小数点设置0-5px"><a href="#1-ios-8-0以上支持小数点设置0-5px" class="headerlink" title="1. ios 8.0以上支持小数点设置0.5px"></a>1. ios 8.0以上支持小数点设置0.5px</h2><p>IOS8下已经支持带小数的px值, 可以结合media query对应devicePixelRatio有个查询值-webkit-min-device-pixel-ratio, css可以写成这样<br>.hairline { border: 1px solid #999 }<br>@media screen and (-webkit-min-device-pixel-ratio: 2) {<br>.hairline { border: 0.5px solid #999 }<br>}<br>@media screen and (-webkit-min-device-pixel-ratio: 3) {<br>.hairline { border: 0.333333px solid #999 }<br>}<br>-webkit-min-device-pixel-ratio属性值可以判断现有设备的 值，对应的我讲相应样式设置为小数值即可满足需求，你也可以使用js判断，但是在ios7及安卓系统中0.5px会被识别为0px显示。以下代码是识别ios8+的js判断实现：<br>if (/iP(hone|od|ad)/.test(navigator.userAgent)) {<br>var v = (navigator.appVersion).match(/OS (\d+)(\d+)?(\d+)?/),<br>version = parseInt(v[1], 10);<br>if(version &gt;= 8){<br>document.documentElement.classList.add(‘hairlines’)<br>}<br>}</p>
+<h2 id="2-transform-scale-0-5"><a href="#2-transform-scale-0-5" class="headerlink" title="2. transform: scale(0.5)"></a>2. transform: scale(0.5)</h2><p>伪类+transform是比较完美的方法了。原理是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。<br>单条border样式设置：<br>.hairline{<br>position: relative;<br>border:none;<br>}<br>.hairline:after{<br>content: ‘’;<br>position: absolute;<br>bottom: 0;<br>background: #000;<br>width: 100%;<br>height: 1px;<br>-webkit-transform: scaleY(0.5);<br>transform: scaleY(0.5);<br>-webkit-transform-origin: 0 0;<br>transform-origin: 0 0;<br>}<br>样式使用的时候，也要结合 JS 代码，判断是否 Retina 屏<br>if(window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2){<br>document.documentElement.classList.add(‘hairlines’)<br>}</p>
+<h2 id="3-viewport-rem"><a href="#3-viewport-rem" class="headerlink" title="3. viewport + rem"></a>3. viewport + rem</h2><p>在devicePixelRatio = 2时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no”&gt;<br>在devicePixelRatio = 3时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no”&gt;<br>同时通过设置对应 viewport 的 rem 基准值,就可以实现了。</p>
+<h2 id="4-box-shadow"><a href="#4-box-shadow" class="headerlink" title="4. box-shadow"></a>4. box-shadow</h2><p>实现方式利用css 对阴影处理的方式实现0.5px的效果<br>-webkit-box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);<br>优点基本所有场景都能满足，缺点是有阴影出现。</p>
 <hr>
 <p>cr.tanym</p>
 
+          
+        
       
     </div>
 
@@ -432,32 +426,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/03/06/phone1px/" rel="next" title="移动端1px实现">
-                <i class="fa fa-chevron-left"></i> 移动端1px实现
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/06/clearfix/" rel="prev" title="清除浮动实现方式">
-                清除浮动实现方式 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -467,15 +441,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -496,17 +473,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -550,23 +518,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#px单位"><span class="nav-number">1.</span> <span class="nav-text">px单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM"><span class="nav-number">2.</span> <span class="nav-text">EM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REM"><span class="nav-number">3.</span> <span class="nav-text">REM</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -695,10 +646,6 @@
   
 
   
-  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script src="/js/src/post-details.js?v=6.6.0"></script>
-
-
 
   
 
