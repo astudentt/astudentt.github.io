@@ -297,6 +297,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/http1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/27/http1/" class="post-title-link" itemprop="url">图解HTTP 第一章总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-27T00:00:00+08:00">2019-03-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-28 20:14:41" itemprop="dateModified" datetime="2020-02-28T20:14:41+08:00">2020-02-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="了解web-及网络基础（第一章）"><a href="#了解web-及网络基础（第一章）" class="headerlink" title="了解web 及网络基础（第一章）"></a>了解web 及网络基础（第一章）</h1><p><br><br>核心内容 简单介绍http诞生以及关系密切的协议和基本概念</p>
+<h3 id="使用http协议访问web"><a href="#使用http协议访问web" class="headerlink" title="使用http协议访问web"></a>使用http协议访问web</h3><p>web使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。</p>
+<h3 id="http的诞生"><a href="#http的诞生" class="headerlink" title="http的诞生"></a>http的诞生</h3><p>诞生背景：互联网黎明期，致力于全世界研究者知识共享。</p>
+<h3 id="网络基础-tcp-ip"><a href="#网络基础-tcp-ip" class="headerlink" title="网络基础 tcp/ip"></a>网络基础 tcp/ip</h3><p>tcp/ip协议族-与互联网相关联的协议集合的总称，http属于其中的一个子集。<br>协议： 计算机网络设备互相通信需要基于相同的方法，包括如何发起、通信语言、结束通信等相关规则即可称为协议。<br>Tcp/ip的分层管理： 可分为4层，应用层、传输层、网络层、数据链路层。<br>层化好处：各层之间接口部分规划好后，方便替换变动的层。</p>
+<p><img src="/images/http/http-1-1.png" alt=""></p>
+<p><strong>tcp/ip 通信传输流</strong></p>
+<p><img src="/images/http/http-1-2.png" alt=""></p>
+<p>利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则往应用层往上走。<br>我们用 HTTP 举例来说明，首先作为发送端的客户端在应用层 （HTTP 协议）发出一个想看某个 Web 页面的 HTTP 请求。<br>接着，为了传输方便，在传输层（TCP 协议）把从应用层处收到的数 据（HTTP 请求报文）进行分割，并在各个报文上打上标记序号及端 口号后转发给网络层。<br>在网络层（IP 协议），增加作为通信目的地的 MAC 地址后转发给链 路层。这样一来，发往网络的通信请求就准备齐全了。<br>接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用 层。当传输到应用层，才能算真正接收到由客户端发送过来的 HTTP 请求。</p>
+<p><img src="/images/http/http-1-3.png" alt=""></p>
+<p>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该 层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层 时会把对应的首部消去。<br>这种把数据信息包装起来的做法称为封装（encapsulate）。</p>
+<p><img src="/images/http/http-1-4.png" alt=""></p>
+<p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层直到被当作一串比特流送入网络。其中每一层对收到的数据都要增加一些首部信息（有时还要增加尾部信息），该过程如图所示。<br>TCP传给IP的数据单元称作TCP报文段或简称为TCP段（TCP segment）；UDP数据与TCP数据基本一致。唯一的不同是UDP传给IP的信息单元称作U D P数据报（UDP datagram），而且UDP的首部长为8字节。IP传给网络接口层的数据单元称作IP数据报(IP datagram)。通过以太网传输的比特流称作帧(Frame )。 </p>
+<h3 id="与http相关的协议：-ip、tcp、dns"><a href="#与http相关的协议：-ip、tcp、dns" class="headerlink" title="与http相关的协议： ip、tcp、dns"></a>与http相关的协议： ip、tcp、dns</h3><p>IP（Internet Protocol）网际协议位于网络层。IP 协议的作用是把各种数据包传送给对方。而要保证确实传送到对方 那里，则需要满足各类条件。其中两个重要的条件是 IP 地址和 MAC 地址（Media Access Control Address）。<br>IP 地址指明了节点被分配到的地址，MAC 地址是指网卡所属的固定 地址。IP 地址可以和 MAC 地址进行配对。IP 地址可变换，但 MAC 地址基本上不会更改。<br>使用 ARP 协议凭借 MAC 地址进行通信：<br>IP 间的通信依赖 MAC 地址。在网络上，通信的双方在同一局域网 （LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转 才能连接到对方。而在进行中转时，会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议（Address Resolution Protocol）。ARP 是一种用以解析地址的协议，根据通信方 的 IP 地址就可以反查出对应的 MAC 地址。</p>
+<p><img src="/images/http/http-1-5.png" alt=""></p>
+<p>TCP协议位于传输层提供可靠的字节流服务。<br>字节流服务：大块数据分割成报文段为单位的数据包管。<br>为确保数据准确送达，TCP协议采用三次握手策略。发送端首先发送一个带有syn标志的数据包给对方，接收端收到后，发送一个带有syn/ack标志的数据包来表示确认。最后发送端再回传一个带有ack标志的数据包，代表三次握手的结束。若在握手过程中某个阶段莫名中断，TCP 协议会再次以相同的顺序发送相同的数据包。</p>
+<p><img src="/images/http/http-1-6.png" alt=""></p>
+<h3 id="负责域名解析的dns服务"><a href="#负责域名解析的dns服务" class="headerlink" title="负责域名解析的dns服务"></a>负责域名解析的dns服务</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</p>
+<h3 id="各种协议与http协议关系"><a href="#各种协议与http协议关系" class="headerlink" title="各种协议与http协议关系"></a>各种协议与http协议关系</h3><p><img src="/images/http/http-1-7.png" alt=""></p>
+<h3 id="URI和-URL"><a href="#URI和-URL" class="headerlink" title="URI和 URL"></a>URI和 URL</h3><p>URI 是统一资源标识符，而 URL 是统一资源定位符（互联网上所处位置）。因此，笼统地说，每个 URL 都是 URI，但不一定每个 URI 都是 URL。这是因为 URI 还包括一个子类，即统一资源名称 (URN)，它命名资源但不指定如何定位资源。</p>
+<p><img src="/images/http/http-1-8.png" alt=""></p>
+<hr>
+<p>cr.tanym</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/sort/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1750,175 +1925,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/css-px-pt/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tan y m">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/06/css-px-pt/" class="post-title-link" itemprop="url">CSS单位 px pt em和rem 之间的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-06 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-06T00:08:30+08:00">2017-03-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-26 15:26:16" itemprop="dateModified" datetime="2018-12-26T15:26:16+08:00">2018-12-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？</p>
-<h2 id="px单位"><a href="#px单位" class="headerlink" title="px单位"></a>px单位</h2><p>px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>特点：</p>
-<ul>
-<li>IE无法调整那些使用px作为单位的字体大小；</li>
-<li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
-<li>Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。</li>
-</ul>
-<h2 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h2><p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>EM特点</p>
-<ul>
-<li>em的值并不是固定的；</li>
-<li>em会继承父级元素的字体大小。并且对自身显示效果有影响</li>
-</ul>
-<p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
-<h2 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h2><p>em是CSS3新增的一个相对单位（root em，根em），使用rem为元素设定字体大小时，是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：<br><code>p {font-size:14px; font-size:.875rem;}</code><br>注意： 你可以根据自身的需求决定你的单位属性，如果要考虑兼容性，可以使用px,或者两者同时使用。</p>
-<hr>
-<p>cr.tanym</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1966,7 +1972,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2009,7 +2015,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

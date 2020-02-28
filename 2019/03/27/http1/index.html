@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="了解web 及网络基础（第一章）核心内容 简单介绍http诞生以及关系密切的协议和基本概念 使用http协议访问webweb使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。 http的诞生诞生背景：互联网黎明期，致力于全世界研究者知识共享。 网络基础 tcp/iptcp/ip协议族-与互联网相关联的协议集合的总称，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解HTTP 第一章总结">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/http1/index.html">
+<meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+<meta property="og:description" content="了解web 及网络基础（第一章）核心内容 简单介绍http诞生以及关系密切的协议和基本概念 使用http协议访问webweb使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。 http的诞生诞生背景：互联网黎明期，致力于全世界研究者知识共享。 网络基础 tcp/iptcp/ip协议族-与互联网相关联的协议集合的总称，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-1.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-2.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-3.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-4.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-5.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-6.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-7.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-1-8.png">
+<meta property="og:updated_time" content="2020-02-28T12:14:41.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图解HTTP 第一章总结">
+<meta name="twitter:description" content="了解web 及网络基础（第一章）核心内容 简单介绍http诞生以及关系密切的协议和基本概念 使用http协议访问webweb使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。 http的诞生诞生背景：互联网黎明期，致力于全世界研究者知识共享。 网络基础 tcp/iptcp/ip协议族-与互联网相关联的协议集合的总称，">
+<meta name="twitter:image" content="http://yoursite.com/images/http/http-1-1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/27/http1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>图解HTTP 第一章总结 | 小 T a n g？ 爱生活～～～</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小 T a n g？ 爱生活～～～</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">青山一道同云雨，明月何曾是两乡。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/http1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图解HTTP 第一章总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-27T00:00:00+08:00">2019-03-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-28 20:14:41" itemprop="dateModified" datetime="2020-02-28T20:14:41+08:00">2020-02-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="了解web-及网络基础（第一章）"><a href="#了解web-及网络基础（第一章）" class="headerlink" title="了解web 及网络基础（第一章）"></a>了解web 及网络基础（第一章）</h1><p><br><br>核心内容 简单介绍http诞生以及关系密切的协议和基本概念</p>
+<h3 id="使用http协议访问web"><a href="#使用http协议访问web" class="headerlink" title="使用http协议访问web"></a>使用http协议访问web</h3><p>web使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。</p>
+<h3 id="http的诞生"><a href="#http的诞生" class="headerlink" title="http的诞生"></a>http的诞生</h3><p>诞生背景：互联网黎明期，致力于全世界研究者知识共享。</p>
+<h3 id="网络基础-tcp-ip"><a href="#网络基础-tcp-ip" class="headerlink" title="网络基础 tcp/ip"></a>网络基础 tcp/ip</h3><p>tcp/ip协议族-与互联网相关联的协议集合的总称，http属于其中的一个子集。<br>协议： 计算机网络设备互相通信需要基于相同的方法，包括如何发起、通信语言、结束通信等相关规则即可称为协议。<br>Tcp/ip的分层管理： 可分为4层，应用层、传输层、网络层、数据链路层。<br>层化好处：各层之间接口部分规划好后，方便替换变动的层。</p>
+<p><img src="/images/http/http-1-1.png" alt=""></p>
+<p><strong>tcp/ip 通信传输流</strong></p>
+<p><img src="/images/http/http-1-2.png" alt=""></p>
+<p>利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则往应用层往上走。<br>我们用 HTTP 举例来说明，首先作为发送端的客户端在应用层 （HTTP 协议）发出一个想看某个 Web 页面的 HTTP 请求。<br>接着，为了传输方便，在传输层（TCP 协议）把从应用层处收到的数 据（HTTP 请求报文）进行分割，并在各个报文上打上标记序号及端 口号后转发给网络层。<br>在网络层（IP 协议），增加作为通信目的地的 MAC 地址后转发给链 路层。这样一来，发往网络的通信请求就准备齐全了。<br>接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用 层。当传输到应用层，才能算真正接收到由客户端发送过来的 HTTP 请求。</p>
+<p><img src="/images/http/http-1-3.png" alt=""></p>
+<p>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该 层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层 时会把对应的首部消去。<br>这种把数据信息包装起来的做法称为封装（encapsulate）。</p>
+<p><img src="/images/http/http-1-4.png" alt=""></p>
+<p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层直到被当作一串比特流送入网络。其中每一层对收到的数据都要增加一些首部信息（有时还要增加尾部信息），该过程如图所示。<br>TCP传给IP的数据单元称作TCP报文段或简称为TCP段（TCP segment）；UDP数据与TCP数据基本一致。唯一的不同是UDP传给IP的信息单元称作U D P数据报（UDP datagram），而且UDP的首部长为8字节。IP传给网络接口层的数据单元称作IP数据报(IP datagram)。通过以太网传输的比特流称作帧(Frame )。 </p>
+<h3 id="与http相关的协议：-ip、tcp、dns"><a href="#与http相关的协议：-ip、tcp、dns" class="headerlink" title="与http相关的协议： ip、tcp、dns"></a>与http相关的协议： ip、tcp、dns</h3><p>IP（Internet Protocol）网际协议位于网络层。IP 协议的作用是把各种数据包传送给对方。而要保证确实传送到对方 那里，则需要满足各类条件。其中两个重要的条件是 IP 地址和 MAC 地址（Media Access Control Address）。<br>IP 地址指明了节点被分配到的地址，MAC 地址是指网卡所属的固定 地址。IP 地址可以和 MAC 地址进行配对。IP 地址可变换，但 MAC 地址基本上不会更改。<br>使用 ARP 协议凭借 MAC 地址进行通信：<br>IP 间的通信依赖 MAC 地址。在网络上，通信的双方在同一局域网 （LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转 才能连接到对方。而在进行中转时，会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议（Address Resolution Protocol）。ARP 是一种用以解析地址的协议，根据通信方 的 IP 地址就可以反查出对应的 MAC 地址。</p>
+<p><img src="/images/http/http-1-5.png" alt=""></p>
+<p>TCP协议位于传输层提供可靠的字节流服务。<br>字节流服务：大块数据分割成报文段为单位的数据包管。<br>为确保数据准确送达，TCP协议采用三次握手策略。发送端首先发送一个带有syn标志的数据包给对方，接收端收到后，发送一个带有syn/ack标志的数据包来表示确认。最后发送端再回传一个带有ack标志的数据包，代表三次握手的结束。若在握手过程中某个阶段莫名中断，TCP 协议会再次以相同的顺序发送相同的数据包。</p>
+<p><img src="/images/http/http-1-6.png" alt=""></p>
+<h3 id="负责域名解析的dns服务"><a href="#负责域名解析的dns服务" class="headerlink" title="负责域名解析的dns服务"></a>负责域名解析的dns服务</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</p>
+<h3 id="各种协议与http协议关系"><a href="#各种协议与http协议关系" class="headerlink" title="各种协议与http协议关系"></a>各种协议与http协议关系</h3><p><img src="/images/http/http-1-7.png" alt=""></p>
+<h3 id="URI和-URL"><a href="#URI和-URL" class="headerlink" title="URI和 URL"></a>URI和 URL</h3><p>URI 是统一资源标识符，而 URL 是统一资源定位符（互联网上所处位置）。因此，笼统地说，每个 URL 都是 URI，但不一定每个 URI 都是 URL。这是因为 URI 还包括一个子类，即统一资源名称 (URN)，它命名资源但不指定如何定位资源。</p>
+<p><img src="/images/http/http-1-8.png" alt=""></p>
+<hr>
+<p>cr.tanym</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/24/sort/" rel="next" title="选择排序">
+                <i class="fa fa-chevron-left"></i> 选择排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tan y m</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#了解web-及网络基础（第一章）"><span class="nav-number">1.</span> <span class="nav-text">了解web 及网络基础（第一章）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用http协议访问web"><span class="nav-number">1.0.1.</span> <span class="nav-text">使用http协议访问web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http的诞生"><span class="nav-number">1.0.2.</span> <span class="nav-text">http的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络基础-tcp-ip"><span class="nav-number">1.0.3.</span> <span class="nav-text">网络基础 tcp/ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与http相关的协议：-ip、tcp、dns"><span class="nav-number">1.0.4.</span> <span class="nav-text">与http相关的协议： ip、tcp、dns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负责域名解析的dns服务"><span class="nav-number">1.0.5.</span> <span class="nav-text">负责域名解析的dns服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各种协议与http协议关系"><span class="nav-number">1.0.6.</span> <span class="nav-text">各种协议与http协议关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URI和-URL"><span class="nav-number">1.0.7.</span> <span class="nav-text">URI和 URL</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tan y m</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
