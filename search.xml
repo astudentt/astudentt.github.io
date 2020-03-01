@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>图解HTTP 第三章总结</title>
+      <link href="/2019/05/14/http3/"/>
+      <url>/2019/05/14/http3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="http报文内的http信息（第三章）"><a href="#http报文内的http信息（第三章）" class="headerlink" title="http报文内的http信息（第三章）"></a>http报文内的http信息（第三章）</h1><p><br></p><h3 id="http报文"><a href="#http报文" class="headerlink" title="http报文"></a>http报文</h3><p>Http报文主要分为请求报文和响应报文两种类型<br>从内容上来说，Http报文包含了报文首部和报文主体<br>结构如下：</p><p><img src="/images/http/http-3-1.png" alt=""></p><h3 id="请求报文及响应报文结构"><a href="#请求报文及响应报文结构" class="headerlink" title="请求报文及响应报文结构"></a>请求报文及响应报文结构</h3><p>请求报文和响应报文的结构：<br><img src="/images/http/http-3-2.png" alt=""></p><p>首部字段：包含各种请求响应的条件等等 ：主要包含四种类型：通用首部，请求首部，响应首部，实体首部<br>内容编码：压缩传输，类似于邮件添加zip附件形式</p><h3 id="编码提升传输速率"><a href="#编码提升传输速率" class="headerlink" title="编码提升传输速率"></a>编码提升传输速率</h3><h4 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h4><p>通常报文主体等于实体主体，只有当传输中进行编码操作时，才有差别。</p><h4 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h4><p>内容编码：压缩传输，类似于邮件添加zip附件形式<br>内容编码常用形式：gzip / compress / deflate / identity</p><h4 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h4><p>将实体主体分块的功能称为分块传输编码。</p><h3 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h3><p>邮件包括文字以及各种附件，采用了MIME（多用途英特网邮件扩展）机制<br>HTTP也采纳了 多部分对象集合(Multipart)<br>包含的对象如下：<br>multipart/form-data:在Web表单文件上传时使用<br>multipart/byteranges:状态码206响应报文包含了多个范围的内容时使用<br>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上 Content-type<br>使用boundary字符串来划分多部分对象集合指明的各类实体。在boundary字符串指定的各个实体的起始行之前插入“–”，而在多部分对象集合对应的字符串最后插入“–”标记做为结束。</p><h3 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h3><p>范围请求：指定范围发送的请求</p><h3 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h3><p>内容协商机制：指客户端和服务器就响应内容进行交涉，然后提供给客户端最为合适的资源。以语言，字符集，编码方式等为基准判断响应的资源<br>包含在请求报文中的某些首部字段就是判断标准：</p><ul><li>Accept</li><li>Accept-Charset</li><li>Accept-Encoding</li><li>Accept-Language</li><li>Content-Language</li></ul><p>内容协商技术有以下三种类型</p><ul><li>服务器驱动协商：由服务器端进行内容协商，以请求首部字段为参考，在服务器端自动处理</li><li>客户端驱动协商：有客户端进行内容协商的方式，用户从浏览器现实的可选项目组手动选择</li><li>透明协商：以上结合，是由服务器和客户端各自进行内容协商的一种方法</li></ul><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图解HTTP 第二章总结</title>
+      <link href="/2019/05/14/http2/"/>
+      <url>/2019/05/14/http2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="简单的http协议（第二章）"><a href="#简单的http协议（第二章）" class="headerlink" title="简单的http协议（第二章）"></a>简单的http协议（第二章）</h1><p><br></p><h3 id="http-协议用于客户端和服务端的交互"><a href="#http-协议用于客户端和服务端的交互" class="headerlink" title="http 协议用于客户端和服务端的交互"></a>http 协议用于客户端和服务端的交互</h3><p>http协议用于客户端和服务器之间的通信。</p><p>请求访问文本或图像等资源的一端称为客户端，提供资源响应的一端称为服务器端。</p><h3 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h3><p>请求报文是有请求方法、请求uri、协议版本、可选的请求首部字段和内容实体构成的。<br><img src="/images/http/http-2-1.png" alt=""></p><p>响应报文基本上由协议版本、状态码、用以解释状态码的短语、可选的响应式首部字段以及实体主体构成。</p><p><img src="/images/http/http-2-2.png" alt=""></p><h3 id="http是不保存状态的协议"><a href="#http是不保存状态的协议" class="headerlink" title="http是不保存状态的协议"></a>http是不保存状态的协议</h3><p>HTTP 是不保存状态的协议(即无状态协议)，协议本身不保留之前的请求或响应报文的信息，为了更快的处理大量事务，确保协议的可伸缩性。后为了实现保持状态功能引入了cookie技术。</p><h3 id="请求uri定位资源"><a href="#请求uri定位资源" class="headerlink" title="请求uri定位资源"></a>请求uri定位资源</h3><p>http协议使用uri定位互联网上的资源。</p><h3 id="告知服务器意图的http方法"><a href="#告知服务器意图的http方法" class="headerlink" title="告知服务器意图的http方法"></a>告知服务器意图的http方法</h3><p>GET 方法用来请求访问已被 URI 识别的资源<br>POST：传输实体主体<br>虽然用 GET 方法也可以传输实体的主体，但一般不用 GET 方法进行传输，而是用 POST 方法。虽说 POST 的功能与 GET 很相似，但POST 的主要目的并不是获取响应的主体内容<br>PUT：传输文件<br>像 FTP 协议的文件上传一样，要求在请求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置，但是，鉴于 HTTP/1.1 的 PUT 方法自身不带验证机制，任何人都可以上传文件 , 存在安全性问题，因此一般的 Web 网站不使用该方法<br>HEAD：获得报文首部</p><p>HEAD 方法和 GET 方法一样，只是不返回报文主体部分。用于确认URI 的有效性及资源更新的日期时间等。<br>DELETE：删除文件<br>DELETE 方法用来删除文件，是与 PUT 相反的方法。DELETE 方法按请求 URI 删除指定的资源。HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机制，所以一般的 Web 网站也不使用 DELETE 方法<br>OPTIONS：询问支持的方法<br>OPTIONS 方法用来查询针对请求 URI 指定的资源支持的方法。<br>CONNECT：要求用隧道协议连接代理<br>CONNECT 方法要求在与代理服务器通信时建立隧道，实现用隧道协议进行 TCP 通信。主要使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输。</p><h3 id="使用方法下达命令"><a href="#使用方法下达命令" class="headerlink" title="使用方法下达命令"></a>使用方法下达命令</h3><p><img src="/images/http/http-2-3.png" alt=""></p><h3 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h3><p>HTTP 协议的初始版本中（HTTP0.9和HTTP1.0），每进行一次 HTTP 通信就要断开一次 TCP连接。<br><img src="/images/http/http-2-4.png" alt=""></p><p>为解决上述 TCP 连接的问题，HTTP/1.1 想出了持久连接（HTTP Persistent Connections，也称为 HTTP keep-alive 或HTTP connection reuse）的方法。<br>持久连接的特点是，只要任意一端没有明确提出断开连接，则保持 TCP 连接状态。在 HTTP/1.1 中，所有的连接默认都是持久连接<br>持久连接的好处在于减少了 TCP 连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载，Web 页面的显示速度也就相应提高了<br><img src="/images/http/http-2-5.png" alt=""></p><h4 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h4><p>持久连接使得多数请求以管线化（pipelining）方式发送成为可能。从前发送请求后需等待并收到响应，才能发送下一个请求。管线化技术出现后，不用等待响应亦可直接发送下一个请求。</p><p><img src="/images/http/http-2-6.png" alt=""></p><h3 id="使用cookie的状态管理"><a href="#使用cookie的状态管理" class="headerlink" title="使用cookie的状态管理"></a>使用cookie的状态管理</h3><p>cookie技术通过在请求和响应报文中写入cookie 信息来控制客户端状态。</p><p><img src="/images/http/http-2-7.png" alt=""><br><img src="/images/http/http-2-8.png" alt=""></p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图解HTTP 第一章总结</title>
+      <link href="/2019/03/27/http1/"/>
+      <url>/2019/03/27/http1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="了解web-及网络基础（第一章）"><a href="#了解web-及网络基础（第一章）" class="headerlink" title="了解web 及网络基础（第一章）"></a>了解web 及网络基础（第一章）</h1><p><br><br>核心内容 简单介绍http诞生以及关系密切的协议和基本概念</p><h3 id="使用http协议访问web"><a href="#使用http协议访问web" class="headerlink" title="使用http协议访问web"></a>使用http协议访问web</h3><p>web使用一种名为http（HyperText Transfer Protocol）-超文本传输协议，来实现客户端与服务器之间的信息传输。</p><h3 id="http的诞生"><a href="#http的诞生" class="headerlink" title="http的诞生"></a>http的诞生</h3><p>诞生背景：互联网黎明期，致力于全世界研究者知识共享。</p><h3 id="网络基础-tcp-ip"><a href="#网络基础-tcp-ip" class="headerlink" title="网络基础 tcp/ip"></a>网络基础 tcp/ip</h3><p>tcp/ip协议族-与互联网相关联的协议集合的总称，http属于其中的一个子集。<br>协议： 计算机网络设备互相通信需要基于相同的方法，包括如何发起、通信语言、结束通信等相关规则即可称为协议。<br>Tcp/ip的分层管理： 可分为4层，应用层、传输层、网络层、数据链路层。<br>层化好处：各层之间接口部分规划好后，方便替换变动的层。</p><p><img src="/images/http/http-1-1.png" alt=""></p><p><strong>tcp/ip 通信传输流</strong></p><p><img src="/images/http/http-1-2.png" alt=""></p><p>利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则往应用层往上走。<br>我们用 HTTP 举例来说明，首先作为发送端的客户端在应用层 （HTTP 协议）发出一个想看某个 Web 页面的 HTTP 请求。<br>接着，为了传输方便，在传输层（TCP 协议）把从应用层处收到的数 据（HTTP 请求报文）进行分割，并在各个报文上打上标记序号及端 口号后转发给网络层。<br>在网络层（IP 协议），增加作为通信目的地的 MAC 地址后转发给链 路层。这样一来，发往网络的通信请求就准备齐全了。<br>接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用 层。当传输到应用层，才能算真正接收到由客户端发送过来的 HTTP 请求。</p><p><img src="/images/http/http-1-3.png" alt=""></p><p>发送端在层与层之间传输数据时，每经过一层时必定会被打上一个该 层所属的首部信息。反之，接收端在层与层传输数据时，每经过一层 时会把对应的首部消去。<br>这种把数据信息包装起来的做法称为封装（encapsulate）。</p><p><img src="/images/http/http-1-4.png" alt=""></p><p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层直到被当作一串比特流送入网络。其中每一层对收到的数据都要增加一些首部信息（有时还要增加尾部信息），该过程如图所示。<br>TCP传给IP的数据单元称作TCP报文段或简称为TCP段（TCP segment）；UDP数据与TCP数据基本一致。唯一的不同是UDP传给IP的信息单元称作U D P数据报（UDP datagram），而且UDP的首部长为8字节。IP传给网络接口层的数据单元称作IP数据报(IP datagram)。通过以太网传输的比特流称作帧(Frame )。 </p><h3 id="与http相关的协议：-ip、tcp、dns"><a href="#与http相关的协议：-ip、tcp、dns" class="headerlink" title="与http相关的协议： ip、tcp、dns"></a>与http相关的协议： ip、tcp、dns</h3><p>IP（Internet Protocol）网际协议位于网络层。IP 协议的作用是把各种数据包传送给对方。而要保证确实传送到对方 那里，则需要满足各类条件。其中两个重要的条件是 IP 地址和 MAC 地址（Media Access Control Address）。<br>IP 地址指明了节点被分配到的地址，MAC 地址是指网卡所属的固定 地址。IP 地址可以和 MAC 地址进行配对。IP 地址可变换，但 MAC 地址基本上不会更改。<br>使用 ARP 协议凭借 MAC 地址进行通信：<br>IP 间的通信依赖 MAC 地址。在网络上，通信的双方在同一局域网 （LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转 才能连接到对方。而在进行中转时，会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议（Address Resolution Protocol）。ARP 是一种用以解析地址的协议，根据通信方 的 IP 地址就可以反查出对应的 MAC 地址。</p><p><img src="/images/http/http-1-5.png" alt=""></p><p>TCP协议位于传输层提供可靠的字节流服务。<br>字节流服务：大块数据分割成报文段为单位的数据包管。<br>为确保数据准确送达，TCP协议采用三次握手策略。发送端首先发送一个带有syn标志的数据包给对方，接收端收到后，发送一个带有syn/ack标志的数据包来表示确认。最后发送端再回传一个带有ack标志的数据包，代表三次握手的结束。若在握手过程中某个阶段莫名中断，TCP 协议会再次以相同的顺序发送相同的数据包。</p><p><img src="/images/http/http-1-6.png" alt=""></p><h3 id="负责域名解析的dns服务"><a href="#负责域名解析的dns服务" class="headerlink" title="负责域名解析的dns服务"></a>负责域名解析的dns服务</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。</p><h3 id="各种协议与http协议关系"><a href="#各种协议与http协议关系" class="headerlink" title="各种协议与http协议关系"></a>各种协议与http协议关系</h3><p><img src="/images/http/http-1-7.png" alt=""></p><h3 id="URI和-URL"><a href="#URI和-URL" class="headerlink" title="URI和 URL"></a>URI和 URL</h3><p>URI 是统一资源标识符，而 URL 是统一资源定位符（互联网上所处位置）。因此，笼统地说，每个 URL 都是 URI，但不一定每个 URI 都是 URL。这是因为 URI 还包括一个子类，即统一资源名称 (URN)，它命名资源但不指定如何定位资源。</p><p><img src="/images/http/http-1-8.png" alt=""></p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>选择排序</title>
+      <link href="/2017/05/24/sort/"/>
+      <url>/2017/05/24/sort/</url>
+      
+        <content type="html"><![CDATA[<p>排名是我们经常遇到的问题，小的时候成绩排名，身高排名，各种排名。听歌曲时有各种各样的排行榜，那么如果让你做一个排行榜，你要怎样把杂乱无章的数据，变成人们能够准确判断的排行榜呢？那么你就需要用到排序算法了，排序算法有很多，选择排序、快速排序、冒泡排序等，此文章介绍的是简单易懂的选择排序法。选择排序是一种灵巧的排序方法，但是速度并不是很快，它的时间复杂度为O（n 2）</p><ol><li>选择排序说明</li></ol><p>选择排序的主要思想是：</p><ol><li>声明一个新的数组作为排序好的数组的容器。</li><li>每次对现有数组进行最大值或最小值查找（根据需要），将查找到的值顺序添加到新数组中，并将其从原数组中剔除。</li><li><p>重复第二步骤直到原数组的长度为一，即可停止，最后得到的新数组则是排序好的数组。</p></li><li><p>举例说明</p></li></ol><p>1）音乐播放器都会有很多统一或自己的排行榜，他就需要根据音乐的播放量或者唱片销量进行排序，然后对应显示。</p><ol start="3"><li>代码说明</li></ol><p>下面我们先写一个用于查找最小值的方法：<br>function findSmallest(arr){<br>var smallest = arr[0];<br>var smallest_index = 0;<br>for(var i=0;i arr[i]){<br>smallest = arr[i];<br>smallest_index=i;<br>}<br>}<br>return smallest_index;<br>}<br>利用findSmallest方法实现选择排序方法：<br>var newArr = [];<br>function selectionSort(arr){<br>if(arr.length &gt;0){<br>smallest = findSmallest(arr);<br>newArr.push(arr[smallest]);<br>arr.splice(smallest,1);<br>selectionSort(arr);<br>}<br>return newArr;<br>}<br>var arr = [3,5,7,9,22,4,66,2,77];<br>console.log(selectionSort(arr));</p><ol start="4"><li>结论</li></ol><p>选择排序的方法是非常容易理解的，在数据量不大的情况下，可以使用，如果对效率有着严格要求的话，建议使用时间复杂度更低的算法。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>移动端touch事件获取clientX, clientY</title>
+      <link href="/2017/04/27/touch/"/>
+      <url>/2017/04/27/touch/</url>
+      
+        <content type="html"><![CDATA[<p>目有个交互需要实现手指滑动的交互，pc端使用mousedown,mousemove,mouseup监听实现。<br>但在iOS设备上mousemove是不好监听的，同类的方法是touchstart,touchmove,touchend。<br>如何获取手指滑动时的坐标位置呢?<br>使用event.clientX是不起作用的，要使用event.changedTouches[0].clientX,<br>如果是jQuery的event对象，使用event.originalEvent.changedTouches[0].clientX。</p><p>FYI~</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Express使用html模板</title>
+      <link href="/2017/04/21/express/"/>
+      <url>/2017/04/21/express/</url>
+      
+        <content type="html"><![CDATA[<p>express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。</p><ol><li>安装ejs<br>使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。<br>npm install ejs</li><li>app.js中引入ejs<br>var ejs = require(‘ejs’);</li><li>设置html引擎<br>app.engine(‘html’, ejs.__express);</li><li>设置视图引擎<br>app.set(‘view engine’, ‘html’);</li></ol><p>重启服务就可以使用html模板咯~，在express搭建的服务器中，html引擎没有被配置，直接添加即可；视图引擎已配置，修改配置即可。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo deploy 出现错误</title>
+      <link href="/2017/04/18/hexo-error/"/>
+      <url>/2017/04/18/hexo-error/</url>
+      
+        <content type="html"><![CDATA[<h2 id="错误如下："><a href="#错误如下：" class="headerlink" title="错误如下："></a>错误如下：</h2><p>fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">http://hexo.io/docs/troubleshooting.html</a><br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)<br>FATAL fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将https 改成 ssh即可。<br>现在我的 config.yml 如下所示：<br>deploy:<br>type: git<br>repo: ssh:<a href="mailto://git@github.com" target="_blank" rel="noopener">//git@github.com</a>/astudentt/astudentt.github.io<br>branch: master</p><p>最后执行hexo deploy命令即可。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GET和POST请求的区别</title>
+      <link href="/2017/03/22/get_post/"/>
+      <url>/2017/03/22/get_post/</url>
+      
+        <content type="html"><![CDATA[<p>开发过程中，GET和POST方法我们会经常使用到，那么它们到底有什么不同呢？</p><ol><li>GET使用URL或cookie传参，而POST将数据放在BODY中。</li><li>GET的URL会有长度上的限制，而POST的数据几乎无限制。</li><li>POSTt相对GET更加安全，因为在数据地址栏内不可见。</li><li>GET请求的参数会保存在浏览器历史记录中。</li></ol><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ios默认样式去除</title>
+      <link href="/2017/03/20/ios-default-style/"/>
+      <url>/2017/03/20/ios-default-style/</url>
+      
+        <content type="html"><![CDATA[<p>ios默认对页面有独特的显示样式，如按钮圆角渐变等，但是开发是我们自己写的样式可能并不能接受它默认的样式，所以去除它是很必要。</p><ol><li>-webkit-appearance: none;<br>ios是webkit内核，所以在appearance前需要加-webkit来对其进行设置，<br>input[type=button]{<br>-webkit-appearance:none;<br>outline:none<br>}<br>上边代码段是对type为button的input控件设置appearance属性，所以ios手机上的button圆角等默认样式就消除了。</li><li>ios手机会将它认为是手机号码的数字串，显示为默认的样式，并且设为拨号链接，可将telephone=no，则手机号码不被显示为拨号链接并且去除相关样式。</li></ol><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git 常用语句</title>
+      <link href="/2017/03/14/git-regular/"/>
+      <url>/2017/03/14/git-regular/</url>
+      
+        <content type="html"><![CDATA[<h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p><h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol><li>git log<br>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</li><li>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</li><li>git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。<br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br>$ git status<br>On branch master<br>Untracked files:<br>(use “git add …” to include in what will be committed)<br>a.txt<br>nothing added to commit but untracked files present (use “git add” to track)<br>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。</li><li>git add<br>git中有两个概念是很重要，工作区和暂存区，工作区（Working Directory），工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库（不要轻易修改）。git add把文件添加进去，实际上就是把文件修改添加到暂存区，暂存区会将所有的文件存起来，然后我们再通过git commit 命令一次性提交暂存区的所有修改，并提交到分支。</li><li>git commit<br>提交语句，一次性提交暂存区的所有修改，并提交到分支。在你修改文件之后，直接执行git commit语句进行提交。</li><li>git push<br>git push origin master把本地库的所有内容推送到远程库上，这样你们一起工作的朋友就可以在master分支看到你提交的内容了。如果你需要推送其他分支的话只要将master分支改成你要推送的分支即可， git push origin [branchname]。</li><li>git pull<br>git push origin master拉取远程库上的master分支到本地，在开发中每次开发之前最好执行一次此语句，保证最新的版本内容，以避免产生不必要的冲突。如果你需要拉取其他分支的话只要将master分支改成你要拉取的分支即可， git pull origin [branchname]。</li><li>git clone<br>在我们看博客的时候，博主们很喜欢，让你下载他们的源码来自己试验，你可能经常看到git clone语句，在词语后加入相应的地址，就可以要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</li><li>git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。<br>$ git branch<br>master<br>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d</li><li>git checkout<br>git checkout 可以用来对不同的分支切换，git checkout master就是切换回master分支，checkout在合并分支中被频繁使用。</li><li>git merge<br>git merge命令用于合并指定分支到当前分支。因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。<br>这些就是一些常用的git语句，掌握好这些命令，就可以熟练运用git了。如果你对命令不太熟悉，你也可以安装图形化工具来管理哦。</li></ol><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jQuery 事件委托总结</title>
+      <link href="/2017/03/07/jquery-event-delegation/"/>
+      <url>/2017/03/07/jquery-event-delegation/</url>
+      
+        <content type="html"><![CDATA[<p>jquery 提供了四种事件监听方式，分别是 bind、live、delegate、on，对应的解除监听的函数分别是 unbind、die、undelegate、off。下面简单介绍下四种方法：</p><h2 id="1-bind-type-data-fn"><a href="#1-bind-type-data-fn" class="headerlink" title="1. bind(type,[data],fn)"></a>1. bind(type,[data],fn)</h2><p>为每个匹配元素的特定事件绑定事件处理函数。jQuery 3.0 中已弃用此方法，请用 on()代替。<br>type:事件类型，如 click、change、mouseover 等;<br>data:传入监听函数的参数，通过 event.data 取到。可选;<br>function:监听函数，可传入 event 对象，这里的 event 是 jQuery 封装的 event 对象，与原生的 event 对象有区别，使用时需要注意<br>bind 的特点就是会把监听器绑定到目标元素上，动态添加元素时事件是不会被绑定上的，动态生成的元素可以是用 live 方法。</p><h2 id="2-live-type-data-fn"><a href="#2-live-type-data-fn" class="headerlink" title="2. live(type, [data], fn)"></a>2. live(type, [data], fn)</h2><p>jQuery 给所有匹配的元素附加一个事件处理函数，即使这个元素是以后再添加进来的也有效。源码如下：<br><code>live: function( types, data, fn ) { jQuery( this.context ).on( types, this.selector, data, fn ); return this; }</code><br>这个方法基本是.bind() 方法的一个变体。使用 .bind() 时，选择器匹配的元素会附加一个事件处理函数，而以后再添加的元素则不会有。为此需要再使用一次 .bind() 才行。比如说</p><p>Click here</p><p>可以给这个元素绑定一个简单的 click 事件：</p><p><code>$(‘.clickme’).bind(‘click’, function() {alert(“Bound handler called.”);});</code><br>当点击了元素，就会弹出一个警告框。然后，想象一下这之后有另一个元素添加进来了。<br> <code>$(‘body’).append(‘Another target‘);</code><br>  尽管这个新的元素也能够匹配选择器 “.clickme” ，但是由于这个元素是在调用 .bind() 之后添加的，所以点击这个元素不会有任何效果。<br>.live() 就提供了对应这种情况的方法。如果我们是这样绑定 click 事件的：<br><code>$(‘.clickme’).live(‘click’, function() {alert(“Live handler called.”);});</code><br>  然后再添加一个新元素：<br><code>$(‘body’).append(‘ Another target ‘);</code><br>然后再点击新增的元素，他依然能够触发事件处理函数。<br>  事件委托<br>  .live() 方法能对一个还没有添加进 DOM 的元素有效，是由于使用了事件委托：绑定在祖先元素上的事件处理函数可以对在后代上触发的事件作出回应。传递给 .live() 的事件处理函数不会绑定在元素上，而是把他作为一个特殊的事件处理函数，绑定在 DOM 树的根节点上。在我们的例子中，当点击新的元素后，会依次发生下列步骤：<br>生成一个 click 事件传递给 来处理<br>由于没有事件处理函数直接绑定在 &lt;divgt; 上，所以事件冒泡到 DOM 树上<br>事件不断冒泡一直到 DOM 树的根节点，默认情况下上面绑定了这个特殊的事件处理函数。<br>执行由 .live() 绑定的特殊的 click 事件处理函数。<br>这个事件处理函数首先检测事件对象的 target 来确定是不是需要继续。这个测试是通过检测<br><code>$(event.target).closest(‘.clickme’)</code><br>能否找到匹配的元素来实现的。<br>如果找到了匹配的元素，那么调用原始的事件处理函数。<br>由于只有在事件发生时才会在上面的第五步里做测试，因此在任何时候添加的元素都能够响应这个事件。<br>附加说明<br>.live() 虽然很有用，但由于其特殊的实现方式，所以不能简单的在任何情况下替换 .bind()。主要的不同有：<br>在 jQuery 1.4 中，.live()方法支持自定义事件，也支持所有的 JavaScript 事件。在 jQuery 1.4.1 中，甚至也支持 focus 和 blue 事件了（映射到更合适，并且可以冒泡的 focusin 和 focusout 上）。另外，在 jQuery 1.4.1 中，也能支持 hover（映射到”mouseenter mouseleave”）。然而在 jQuery 1.3.x 中，只支持支持的 JavaScript 事件和自定义事件：click, dblclick, keydown, keypress, keyup, mousedown, mousemove, mouseout, mouseover, 和 mouseup.<br>.live() 并不完全支持通过 DOM 遍历的方法找到的元素。取而代之的是，应当总是在一个选择器后面直接使用 .live() 方法，正如前面例子里提到的。<br> 当一个事件处理函数用 .live() 绑定后，要停止执行其他的事件处理函数，那么这个函数必须返回 false。 仅仅调用 .stopPropagation() 无法实现这个目的。</p><h2 id="3-delegate-selector-type-data-fn"><a href="#3-delegate-selector-type-data-fn" class="headerlink" title="3. delegate(selector,[type],[data],fn)"></a>3. delegate(selector,[type],[data],fn)</h2><p>指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。jQuery 3.0 中已弃用此方法，请用 on()代替。<br>delegate 比 live 多了一个参数 selector，用来指定触发事件的目标元素，监听器将被绑定在调用此方法的元素上。源码如下：<br><code>delegate: function( selector, types, data, fn ) {return this.on( types, selector, data, fn );}</code><br>delegate 这个方法可作为 live()方法的替代，使得每次事件绑定到特定的 DOM 元素。</p><h2 id="4-on-events-selector-data-fn"><a href="#4-on-events-selector-data-fn" class="headerlink" title="4. on(events,[selector],[data],fn)"></a>4. on(events,[selector],[data],fn)</h2><p>on()方法绑定事件处理程序到当前选定的 jQuery 对象中的元素。on()方法绑定事件处理程序到当前选定的 jQuery 对象中的元素。在 jQuery 1.7 中，.on()方法 提供绑定事件处理程序所需的所有功能。帮助从旧的 jQuery 事件方法转换。<br>现在官方推荐使用 on 方法进行绑定，也将 bind 方法在新版 jquery 中弃用了。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSS单位 px pt em和rem 之间的区别</title>
+      <link href="/2017/03/06/css-px-pt/"/>
+      <url>/2017/03/06/css-px-pt/</url>
+      
+        <content type="html"><![CDATA[<p>前端开发中CSS可以定义大小的单位有四种px，pt，em，rem，px是网页开发中最常见的单位了。不过现在如今的部分网站已经开始用rem这个单位了。那么这四个单位有什么区别呢？</p><h2 id="px单位"><a href="#px单位" class="headerlink" title="px单位"></a>px单位</h2><p>px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>特点：</p><ul><li>IE无法调整那些使用px作为单位的字体大小；</li><li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li><li>Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。</li></ul><h2 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h2><p>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>EM特点</p><ul><li>em的值并不是固定的；</li><li>em会继承父级元素的字体大小。并且对自身显示效果有影响</li></ul><p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p><h2 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h2><p>em是CSS3新增的一个相对单位（root em，根em），使用rem为元素设定字体大小时，是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：<br><code>p {font-size:14px; font-size:.875rem;}</code><br>注意： 你可以根据自身的需求决定你的单位属性，如果要考虑兼容性，可以使用px,或者两者同时使用。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>清除浮动实现方式</title>
+      <link href="/2017/03/06/clearfix/"/>
+      <url>/2017/03/06/clearfix/</url>
+      
+        <content type="html"><![CDATA[<p>为子元素设置浮动是开发过程中常出现的场景，在为子元素设置浮动的时候，会对他的父元素，以及前后元素产生一定的影响，比如：（1）背景不能显示 （2）边框不能撑开 （3）margin、padding等设置值不能正确显示。所以我们需要清除他的浮动，以下是清除浮动的部分方法</p><h2 id="1-父级div定义-height"><a href="#1-父级div定义-height" class="headerlink" title="1. 父级div定义 height"></a>1. 父级div定义 height</h2><p>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。<br>优点：简单、容易掌握<br>缺点：不推荐使用固定高度的元素，在适配过程中会产生很多问题，只适合高度固定的布局，要给出精确的高度。所以不推荐使用</p><h2 id="2-结尾处加空div标签-clear-both"><a href="#2-结尾处加空div标签-clear-both" class="headerlink" title="2. 结尾处加空div标签 clear:both"></a>2. 结尾处加空div标签 clear:both</h2><p>.clear{clear:both}<br>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度<br>优点：简单、容易掌握、兼容性好<br>缺点：使用过程中，会添加很多空标签，影响效率，降低代码可读性</p><h2 id="3-父级div定义-伪类-after-和-zoom"><a href="#3-父级div定义-伪类-after-和-zoom" class="headerlink" title="3. 父级div定义 伪类:after 和 zoom"></a>3. 父级div定义 伪类:after 和 zoom</h2><p>.clearfloat:after{display:block;clear:both;content:””;visibility:hidden;height:0}<br>.clearfloat{zoom:1}<br>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题<br>优点：浏览器支持好、不容易出现怪问题<br>缺点：代码多。<br>以上代码是现在大家用的比较多的清楚浮动的方法，推荐使用第三种，不仅兼容性好，而且效率高，还有些其他方法可以清楚浮动，但是与此产生的影响可能会更大，所以本篇不予推荐。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>移动端1px实现</title>
+      <link href="/2017/03/06/phone1px/"/>
+      <url>/2017/03/06/phone1px/</url>
+      
+        <content type="html"><![CDATA[<p>移动端开发过程中，不可避免的会遇到1px的实现问题.那么这个1px是什么问题呢？我简单的说一下，移动端兼容过程中ios系统是很重要的一部分，retina屏幕 大家也应该有所了解， 1px变粗的原因呢就是：viewport的设置和屏幕物理分辨率是按比例而不是相同的. 移动端window对象有个devicePixelRatio属性, 它表示设备物理像素和css像素的比例, 在retina屏的iphone手机上, 这个值为2或3, css里写的1px长度映射到物理像素上就有2px或3px那么长.下面我们就说一下怎样实现1px像素。现在的实现方式有很多种，我们来列举一些</p><h2 id="1-ios-8-0以上支持小数点设置0-5px"><a href="#1-ios-8-0以上支持小数点设置0-5px" class="headerlink" title="1. ios 8.0以上支持小数点设置0.5px"></a>1. ios 8.0以上支持小数点设置0.5px</h2><p>IOS8下已经支持带小数的px值, 可以结合media query对应devicePixelRatio有个查询值-webkit-min-device-pixel-ratio, css可以写成这样<br>.hairline { border: 1px solid #999 }<br>@media screen and (-webkit-min-device-pixel-ratio: 2) {<br>.hairline { border: 0.5px solid #999 }<br>}<br>@media screen and (-webkit-min-device-pixel-ratio: 3) {<br>.hairline { border: 0.333333px solid #999 }<br>}<br>-webkit-min-device-pixel-ratio属性值可以判断现有设备的 值，对应的我讲相应样式设置为小数值即可满足需求，你也可以使用js判断，但是在ios7及安卓系统中0.5px会被识别为0px显示。以下代码是识别ios8+的js判断实现：<br>if (/iP(hone|od|ad)/.test(navigator.userAgent)) {<br>var v = (navigator.appVersion).match(/OS (\d+)(\d+)?(\d+)?/),<br>version = parseInt(v[1], 10);<br>if(version &gt;= 8){<br>document.documentElement.classList.add(‘hairlines’)<br>}<br>}</p><h2 id="2-transform-scale-0-5"><a href="#2-transform-scale-0-5" class="headerlink" title="2. transform: scale(0.5)"></a>2. transform: scale(0.5)</h2><p>伪类+transform是比较完美的方法了。原理是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。<br>单条border样式设置：<br>.hairline{<br>position: relative;<br>border:none;<br>}<br>.hairline:after{<br>content: ‘’;<br>position: absolute;<br>bottom: 0;<br>background: #000;<br>width: 100%;<br>height: 1px;<br>-webkit-transform: scaleY(0.5);<br>transform: scaleY(0.5);<br>-webkit-transform-origin: 0 0;<br>transform-origin: 0 0;<br>}<br>样式使用的时候，也要结合 JS 代码，判断是否 Retina 屏<br>if(window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2){<br>document.documentElement.classList.add(‘hairlines’)<br>}</p><h2 id="3-viewport-rem"><a href="#3-viewport-rem" class="headerlink" title="3. viewport + rem"></a>3. viewport + rem</h2><p>在devicePixelRatio = 2时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no”&gt;<br>在devicePixelRatio = 3时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no”&gt;<br>同时通过设置对应 viewport 的 rem 基准值,就可以实现了。</p><h2 id="4-box-shadow"><a href="#4-box-shadow" class="headerlink" title="4. box-shadow"></a>4. box-shadow</h2><p>实现方式利用css 对阴影处理的方式实现0.5px的效果<br>-webkit-box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);<br>优点基本所有场景都能满足，缺点是有阴影出现。</p><hr><p>cr.tanym</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
