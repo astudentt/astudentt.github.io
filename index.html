@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/http3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/http4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tan y m">
@@ -317,7 +317,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/14/http3/" class="post-title-link" itemprop="url">图解HTTP 第三章总结</a>
+                <a href="/2019/07/09/http4/" class="post-title-link" itemprop="url">图解HTTP 第四章总结</a>
               
             
           </h1>
@@ -342,7 +342,7 @@
                 
               
 
-              <time title="Created: 2019-05-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-14T00:00:00+08:00">2019-05-14</time>
+              <time title="Created: 2019-07-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-09T00:00:00+08:00">2019-07-09</time>
             
 
             
@@ -359,7 +359,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-01 20:36:13" itemprop="dateModified" datetime="2020-03-01T20:36:13+08:00">2020-03-01</time>
+                <time title="Modified: 2020-03-02 20:52:06" itemprop="dateModified" datetime="2020-03-02T20:52:06+08:00">2020-03-02</time>
               
             
           </span>
@@ -394,29 +394,27 @@
       
         
           
-            <h1 id="http报文内的http信息（第三章）"><a href="#http报文内的http信息（第三章）" class="headerlink" title="http报文内的http信息（第三章）"></a>http报文内的http信息（第三章）</h1><p><br></p>
-<h3 id="http报文"><a href="#http报文" class="headerlink" title="http报文"></a>http报文</h3><p>Http报文主要分为请求报文和响应报文两种类型<br>从内容上来说，Http报文包含了报文首部和报文主体<br>结构如下：</p>
-<p><img src="/images/http/http-3-1.png" alt=""></p>
-<h3 id="请求报文及响应报文结构"><a href="#请求报文及响应报文结构" class="headerlink" title="请求报文及响应报文结构"></a>请求报文及响应报文结构</h3><p>请求报文和响应报文的结构：<br><img src="/images/http/http-3-2.png" alt=""></p>
-<p>首部字段：包含各种请求响应的条件等等 ：主要包含四种类型：通用首部，请求首部，响应首部，实体首部<br>内容编码：压缩传输，类似于邮件添加zip附件形式</p>
-<h3 id="编码提升传输速率"><a href="#编码提升传输速率" class="headerlink" title="编码提升传输速率"></a>编码提升传输速率</h3><h4 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h4><p>通常报文主体等于实体主体，只有当传输中进行编码操作时，才有差别。</p>
-<h4 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h4><p>内容编码：压缩传输，类似于邮件添加zip附件形式<br>内容编码常用形式：gzip / compress / deflate / identity</p>
-<h4 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h4><p>将实体主体分块的功能称为分块传输编码。</p>
-<h3 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h3><p>邮件包括文字以及各种附件，采用了MIME（多用途英特网邮件扩展）机制<br>HTTP也采纳了 多部分对象集合(Multipart)<br>包含的对象如下：<br>multipart/form-data:在Web表单文件上传时使用<br>multipart/byteranges:状态码206响应报文包含了多个范围的内容时使用<br>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上 Content-type<br>使用boundary字符串来划分多部分对象集合指明的各类实体。在boundary字符串指定的各个实体的起始行之前插入“–”，而在多部分对象集合对应的字符串最后插入“–”标记做为结束。</p>
-<h3 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h3><p>范围请求：指定范围发送的请求</p>
-<h3 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h3><p>内容协商机制：指客户端和服务器就响应内容进行交涉，然后提供给客户端最为合适的资源。以语言，字符集，编码方式等为基准判断响应的资源<br>包含在请求报文中的某些首部字段就是判断标准：</p>
+            <h1 id="返回结果的http状态码（第四章）"><a href="#返回结果的http状态码（第四章）" class="headerlink" title="返回结果的http状态码（第四章）"></a>返回结果的http状态码（第四章）</h1><p><br></p>
+<h3 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h3><p>状态码的职责是当客户端向服务器端发送请求时，描述返回的请求结果。<br>状态码类别如下：</p>
+<p><img src="/images/http/http-4-1.png" alt=""></p>
+<h3 id="2xx成功"><a href="#2xx成功" class="headerlink" title="2xx成功"></a>2xx成功</h3><p>200 OK 从客户端发来的请求在服务器端被正常处理了<br>204 No Content  请求处理成功，但没有资源可返回<br>206 Partial Content 表示客户端进行了范围请求，服务器成功执行了这部分GET请求，响应报文中包括由Content-Range指定范围的实体内容</p>
+<h3 id="3xx-重定向"><a href="#3xx-重定向" class="headerlink" title="3xx 重定向"></a>3xx 重定向</h3><p>浏览器需要执行某些特殊的处理以正确处理请求</p>
 <ul>
-<li>Accept</li>
-<li>Accept-Charset</li>
-<li>Accept-Encoding</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
+<li>301 Moved Permanently 永久性重定向 表示请求的资源已被分配了新的URI  需要进行书签引用的变更</li>
+<li>302 Found 临时性重定向 表示请求的资源已被分配到新的URI，希望用户本次能使用新的URI</li>
+<li>303 See Other 表示由于请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源</li>
+<li>304 Not Modified 表示客户端发送附带条件的请求时，服务器端允许访问资源，但因发生请求未满足条件的情况后，直接返回304….（和重定向无关）</li>
+<li>307 Temporary Redirect 临时重定向 与302同，但不会从POST变为GET</li>
 </ul>
-<p>内容协商技术有以下三种类型</p>
-<ul>
-<li>服务器驱动协商：由服务器端进行内容协商，以请求首部字段为参考，在服务器端自动处理</li>
-<li>客户端驱动协商：有客户端进行内容协商的方式，用户从浏览器现实的可选项目组手动选择</li>
-<li>透明协商：以上结合，是由服务器和客户端各自进行内容协商的一种方法</li>
+<h3 id="4xx客户端错误"><a href="#4xx客户端错误" class="headerlink" title="4xx客户端错误"></a>4xx客户端错误</h3><ul>
+<li>400 Bad Request 请求报文中存在语法错误</li>
+<li>401 Unauthorized 表示发送的请求需要有通过HTTP认证（BASIC、 DIGEST认证）的认证信息 若之前已进行一次请求，则表示认证失败</li>
+<li>403 Forbidden 表明对请求资源的访问被服务器拒绝了</li>
+<li>404 Not Found 服务器上无法找到请求的资源 或者拒绝不想给理由</li>
+</ul>
+<h3 id="5xx服务器错误"><a href="#5xx服务器错误" class="headerlink" title="5xx服务器错误"></a>5xx服务器错误</h3><ul>
+<li>500 Internal Server Error 服务器端在执行请求时发生了错误 也可能是Web应用存在的bug或某些临时故障</li>
+<li>503 Service Unavailable 表明服务器暂时处于超负载或者正在停机维护，现在无法请求处理</li>
 </ul>
 <hr>
 <p>cr.tanym</p>
@@ -590,6 +588,185 @@
 <p><img src="/images/http/http-2-6.png" alt=""></p>
 <h3 id="使用cookie的状态管理"><a href="#使用cookie的状态管理" class="headerlink" title="使用cookie的状态管理"></a>使用cookie的状态管理</h3><p>cookie技术通过在请求和响应报文中写入cookie 信息来控制客户端状态。</p>
 <p><img src="/images/http/http-2-7.png" alt=""><br><img src="/images/http/http-2-8.png" alt=""></p>
+<hr>
+<p>cr.tanym</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/http3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/14/http3/" class="post-title-link" itemprop="url">图解HTTP 第三章总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-14T00:00:00+08:00">2019-05-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-01 20:36:13" itemprop="dateModified" datetime="2020-03-01T20:36:13+08:00">2020-03-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="http报文内的http信息（第三章）"><a href="#http报文内的http信息（第三章）" class="headerlink" title="http报文内的http信息（第三章）"></a>http报文内的http信息（第三章）</h1><p><br></p>
+<h3 id="http报文"><a href="#http报文" class="headerlink" title="http报文"></a>http报文</h3><p>Http报文主要分为请求报文和响应报文两种类型<br>从内容上来说，Http报文包含了报文首部和报文主体<br>结构如下：</p>
+<p><img src="/images/http/http-3-1.png" alt=""></p>
+<h3 id="请求报文及响应报文结构"><a href="#请求报文及响应报文结构" class="headerlink" title="请求报文及响应报文结构"></a>请求报文及响应报文结构</h3><p>请求报文和响应报文的结构：<br><img src="/images/http/http-3-2.png" alt=""></p>
+<p>首部字段：包含各种请求响应的条件等等 ：主要包含四种类型：通用首部，请求首部，响应首部，实体首部<br>内容编码：压缩传输，类似于邮件添加zip附件形式</p>
+<h3 id="编码提升传输速率"><a href="#编码提升传输速率" class="headerlink" title="编码提升传输速率"></a>编码提升传输速率</h3><h4 id="报文主体和实体主体的差异"><a href="#报文主体和实体主体的差异" class="headerlink" title="报文主体和实体主体的差异"></a>报文主体和实体主体的差异</h4><p>通常报文主体等于实体主体，只有当传输中进行编码操作时，才有差别。</p>
+<h4 id="压缩传输的内容编码"><a href="#压缩传输的内容编码" class="headerlink" title="压缩传输的内容编码"></a>压缩传输的内容编码</h4><p>内容编码：压缩传输，类似于邮件添加zip附件形式<br>内容编码常用形式：gzip / compress / deflate / identity</p>
+<h4 id="分割发送的分块传输编码"><a href="#分割发送的分块传输编码" class="headerlink" title="分割发送的分块传输编码"></a>分割发送的分块传输编码</h4><p>将实体主体分块的功能称为分块传输编码。</p>
+<h3 id="发送多种数据的多部分对象集合"><a href="#发送多种数据的多部分对象集合" class="headerlink" title="发送多种数据的多部分对象集合"></a>发送多种数据的多部分对象集合</h3><p>邮件包括文字以及各种附件，采用了MIME（多用途英特网邮件扩展）机制<br>HTTP也采纳了 多部分对象集合(Multipart)<br>包含的对象如下：<br>multipart/form-data:在Web表单文件上传时使用<br>multipart/byteranges:状态码206响应报文包含了多个范围的内容时使用<br>在HTTP报文中使用多部分对象集合时，需要在首部字段里加上 Content-type<br>使用boundary字符串来划分多部分对象集合指明的各类实体。在boundary字符串指定的各个实体的起始行之前插入“–”，而在多部分对象集合对应的字符串最后插入“–”标记做为结束。</p>
+<h3 id="获取部分内容的范围请求"><a href="#获取部分内容的范围请求" class="headerlink" title="获取部分内容的范围请求"></a>获取部分内容的范围请求</h3><p>范围请求：指定范围发送的请求</p>
+<h3 id="内容协商返回最合适的内容"><a href="#内容协商返回最合适的内容" class="headerlink" title="内容协商返回最合适的内容"></a>内容协商返回最合适的内容</h3><p>内容协商机制：指客户端和服务器就响应内容进行交涉，然后提供给客户端最为合适的资源。以语言，字符集，编码方式等为基准判断响应的资源<br>包含在请求报文中的某些首部字段就是判断标准：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Charset</li>
+<li>Accept-Encoding</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+</ul>
+<p>内容协商技术有以下三种类型</p>
+<ul>
+<li>服务器驱动协商：由服务器端进行内容协商，以请求首部字段为参考，在服务器端自动处理</li>
+<li>客户端驱动协商：有客户端进行内容协商的方式，用户从浏览器现实的可选项目组手动选择</li>
+<li>透明协商：以上结合，是由服务器和客户端各自进行内容协商的一种方法</li>
+</ul>
 <hr>
 <p>cr.tanym</p>
 
@@ -1785,175 +1962,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/git-regular/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tan y m">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/14/git-regular/" class="post-title-link" itemprop="url">git 常用语句</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-14 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-14T00:08:30+08:00">2017-03-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-04 16:12:11" itemprop="dateModified" datetime="2019-01-04T16:12:11+08:00">2019-01-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
-<li>git log<br>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</li>
-<li>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
-<li>git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。<br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br>$ git status<br>On branch master<br>Untracked files:<br>(use “git add …” to include in what will be committed)<br>a.txt<br>nothing added to commit but untracked files present (use “git add” to track)<br>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。</li>
-<li>git add<br>git中有两个概念是很重要，工作区和暂存区，工作区（Working Directory），工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库（不要轻易修改）。git add把文件添加进去，实际上就是把文件修改添加到暂存区，暂存区会将所有的文件存起来，然后我们再通过git commit 命令一次性提交暂存区的所有修改，并提交到分支。</li>
-<li>git commit<br>提交语句，一次性提交暂存区的所有修改，并提交到分支。在你修改文件之后，直接执行git commit语句进行提交。</li>
-<li>git push<br>git push origin master把本地库的所有内容推送到远程库上，这样你们一起工作的朋友就可以在master分支看到你提交的内容了。如果你需要推送其他分支的话只要将master分支改成你要推送的分支即可， git push origin [branchname]。</li>
-<li>git pull<br>git push origin master拉取远程库上的master分支到本地，在开发中每次开发之前最好执行一次此语句，保证最新的版本内容，以避免产生不必要的冲突。如果你需要拉取其他分支的话只要将master分支改成你要拉取的分支即可， git pull origin [branchname]。</li>
-<li>git clone<br>在我们看博客的时候，博主们很喜欢，让你下载他们的源码来自己试验，你可能经常看到git clone语句，在词语后加入相应的地址，就可以要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</li>
-<li>git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。<br>$ git branch<br>master<br>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d</li>
-<li>git checkout<br>git checkout 可以用来对不同的分支切换，git checkout master就是切换回master分支，checkout在合并分支中被频繁使用。</li>
-<li>git merge<br>git merge命令用于合并指定分支到当前分支。因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。<br>这些就是一些常用的git语句，掌握好这些命令，就可以熟练运用git了。如果你对命令不太熟悉，你也可以安装图形化工具来管理哦。</li>
-</ol>
-<hr>
-<p>cr.tanym</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2001,7 +2009,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

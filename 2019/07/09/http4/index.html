@@ -104,24 +104,26 @@
 
 
 
-  <meta name="description" content="express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。  安装ejs使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。npm install ejs app.js中引入ejsvar ejs = require(‘ejs’); 设置html引擎app.engine(‘html’, ejs.__express)">
+  <meta name="description" content="返回结果的http状态码（第四章） 状态码告知从服务器端返回的请求结果状态码的职责是当客户端向服务器端发送请求时，描述返回的请求结果。状态码类别如下：  2xx成功200 OK 从客户端发来的请求在服务器端被正常处理了204 No Content  请求处理成功，但没有资源可返回206 Partial Content 表示客户端进行了范围请求，服务器成功执行了这部分GET请求，响应报文中包括由Co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Express使用html模板">
-<meta property="og:url" content="http://yoursite.com/2017/04/21/express/index.html">
+<meta property="og:title" content="图解HTTP 第四章总结">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/http4/index.html">
 <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-<meta property="og:description" content="express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。  安装ejs使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。npm install ejs app.js中引入ejsvar ejs = require(‘ejs’); 设置html引擎app.engine(‘html’, ejs.__express)">
+<meta property="og:description" content="返回结果的http状态码（第四章） 状态码告知从服务器端返回的请求结果状态码的职责是当客户端向服务器端发送请求时，描述返回的请求结果。状态码类别如下：  2xx成功200 OK 从客户端发来的请求在服务器端被正常处理了204 No Content  请求处理成功，但没有资源可返回206 Partial Content 表示客户端进行了范围请求，服务器成功执行了这部分GET请求，响应报文中包括由Co">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T01:47:43.006Z">
+<meta property="og:image" content="http://yoursite.com/images/http/http-4-1.png">
+<meta property="og:updated_time" content="2020-03-02T12:52:06.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Express使用html模板">
-<meta name="twitter:description" content="express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。  安装ejs使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。npm install ejs app.js中引入ejsvar ejs = require(‘ejs’); 设置html引擎app.engine(‘html’, ejs.__express)">
+<meta name="twitter:title" content="图解HTTP 第四章总结">
+<meta name="twitter:description" content="返回结果的http状态码（第四章） 状态码告知从服务器端返回的请求结果状态码的职责是当客户端向服务器端发送请求时，描述返回的请求结果。状态码类别如下：  2xx成功200 OK 从客户端发来的请求在服务器端被正常处理了204 No Content  请求处理成功，但没有资源可返回206 Partial Content 表示客户端进行了范围请求，服务器成功执行了这部分GET请求，响应报文中包括由Co">
+<meta name="twitter:image" content="http://yoursite.com/images/http/http-4-1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/21/express/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/09/http4/">
 
 
 
@@ -131,7 +133,7 @@
   };
 </script>
 
-  <title>Express使用html模板 | 小 T a n g？ 爱生活～～～</title>
+  <title>图解HTTP 第四章总结 | 小 T a n g？ 爱生活～～～</title>
   
 
 
@@ -300,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/21/express/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/http4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tan y m">
@@ -317,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Express使用html模板
+          <h1 class="post-title" itemprop="name headline">图解HTTP 第四章总结
 
               
             
@@ -343,7 +345,7 @@
                 
               
 
-              <time title="Created: 2017-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-21T00:00:00+08:00">2017-04-21</time>
+              <time title="Created: 2019-07-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-09T00:00:00+08:00">2019-07-09</time>
             
 
             
@@ -360,7 +362,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-22 09:47:43" itemprop="dateModified" datetime="2019-02-22T09:47:43+08:00">2019-02-22</time>
+                <time title="Modified: 2020-03-02 20:52:06" itemprop="dateModified" datetime="2020-03-02T20:52:06+08:00">2020-03-02</time>
               
             
           </span>
@@ -393,14 +395,28 @@
       
 
       
-        <p>express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。</p>
-<ol>
-<li>安装ejs<br>使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。<br>npm install ejs</li>
-<li>app.js中引入ejs<br>var ejs = require(‘ejs’);</li>
-<li>设置html引擎<br>app.engine(‘html’, ejs.__express);</li>
-<li>设置视图引擎<br>app.set(‘view engine’, ‘html’);</li>
-</ol>
-<p>重启服务就可以使用html模板咯~，在express搭建的服务器中，html引擎没有被配置，直接添加即可；视图引擎已配置，修改配置即可。</p>
+        <h1 id="返回结果的http状态码（第四章）"><a href="#返回结果的http状态码（第四章）" class="headerlink" title="返回结果的http状态码（第四章）"></a>返回结果的http状态码（第四章）</h1><p><br></p>
+<h3 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h3><p>状态码的职责是当客户端向服务器端发送请求时，描述返回的请求结果。<br>状态码类别如下：</p>
+<p><img src="/images/http/http-4-1.png" alt=""></p>
+<h3 id="2xx成功"><a href="#2xx成功" class="headerlink" title="2xx成功"></a>2xx成功</h3><p>200 OK 从客户端发来的请求在服务器端被正常处理了<br>204 No Content  请求处理成功，但没有资源可返回<br>206 Partial Content 表示客户端进行了范围请求，服务器成功执行了这部分GET请求，响应报文中包括由Content-Range指定范围的实体内容</p>
+<h3 id="3xx-重定向"><a href="#3xx-重定向" class="headerlink" title="3xx 重定向"></a>3xx 重定向</h3><p>浏览器需要执行某些特殊的处理以正确处理请求</p>
+<ul>
+<li>301 Moved Permanently 永久性重定向 表示请求的资源已被分配了新的URI  需要进行书签引用的变更</li>
+<li>302 Found 临时性重定向 表示请求的资源已被分配到新的URI，希望用户本次能使用新的URI</li>
+<li>303 See Other 表示由于请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源</li>
+<li>304 Not Modified 表示客户端发送附带条件的请求时，服务器端允许访问资源，但因发生请求未满足条件的情况后，直接返回304….（和重定向无关）</li>
+<li>307 Temporary Redirect 临时重定向 与302同，但不会从POST变为GET</li>
+</ul>
+<h3 id="4xx客户端错误"><a href="#4xx客户端错误" class="headerlink" title="4xx客户端错误"></a>4xx客户端错误</h3><ul>
+<li>400 Bad Request 请求报文中存在语法错误</li>
+<li>401 Unauthorized 表示发送的请求需要有通过HTTP认证（BASIC、 DIGEST认证）的认证信息 若之前已进行一次请求，则表示认证失败</li>
+<li>403 Forbidden 表明对请求资源的访问被服务器拒绝了</li>
+<li>404 Not Found 服务器上无法找到请求的资源 或者拒绝不想给理由</li>
+</ul>
+<h3 id="5xx服务器错误"><a href="#5xx服务器错误" class="headerlink" title="5xx服务器错误"></a>5xx服务器错误</h3><ul>
+<li>500 Internal Server Error 服务器端在执行请求时发生了错误 也可能是Web应用存在的bug或某些临时故障</li>
+<li>503 Service Unavailable 表明服务器暂时处于超负载或者正在停机维护，现在无法请求处理</li>
+</ul>
 <hr>
 <p>cr.tanym</p>
 
@@ -433,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/18/hexo-error/" rel="next" title="hexo deploy 出现错误">
-                <i class="fa fa-chevron-left"></i> hexo deploy 出现错误
+              <a href="/2019/05/14/http2/" rel="next" title="图解HTTP 第二章总结">
+                <i class="fa fa-chevron-left"></i> 图解HTTP 第二章总结
               </a>
             
           </div>
@@ -442,10 +458,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/27/touch/" rel="prev" title="移动端touch事件获取clientX, clientY">
-                移动端touch事件获取clientX, clientY <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -535,6 +556,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#返回结果的http状态码（第四章）"><span class="nav-number">1.</span> <span class="nav-text">返回结果的http状态码（第四章）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码告知从服务器端返回的请求结果"><span class="nav-number">1.0.1.</span> <span class="nav-text">状态码告知从服务器端返回的请求结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2xx成功"><span class="nav-number">1.0.2.</span> <span class="nav-text">2xx成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3xx-重定向"><span class="nav-number">1.0.3.</span> <span class="nav-text">3xx 重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4xx客户端错误"><span class="nav-number">1.0.4.</span> <span class="nav-text">4xx客户端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5xx服务器错误"><span class="nav-number">1.0.5.</span> <span class="nav-text">5xx服务器错误</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
