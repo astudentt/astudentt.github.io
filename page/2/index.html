@@ -951,6 +951,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/clearfix/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/06/clearfix/" class="post-title-link" itemprop="url">清除浮动实现方式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-03-06 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-06T00:08:30+08:00">2017-03-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-05 10:18:01" itemprop="dateModified" datetime="2019-03-05T10:18:01+08:00">2019-03-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>为子元素设置浮动是开发过程中常出现的场景，在为子元素设置浮动的时候，会对他的父元素，以及前后元素产生一定的影响，比如：（1）背景不能显示 （2）边框不能撑开 （3）margin、padding等设置值不能正确显示。所以我们需要清除他的浮动，以下是清除浮动的部分方法</p>
+<h2 id="1-父级div定义-height"><a href="#1-父级div定义-height" class="headerlink" title="1. 父级div定义 height"></a>1. 父级div定义 height</h2><p>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。<br>优点：简单、容易掌握<br>缺点：不推荐使用固定高度的元素，在适配过程中会产生很多问题，只适合高度固定的布局，要给出精确的高度。所以不推荐使用</p>
+<h2 id="2-结尾处加空div标签-clear-both"><a href="#2-结尾处加空div标签-clear-both" class="headerlink" title="2. 结尾处加空div标签 clear:both"></a>2. 结尾处加空div标签 clear:both</h2><p>.clear{clear:both}<br>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度<br>优点：简单、容易掌握、兼容性好<br>缺点：使用过程中，会添加很多空标签，影响效率，降低代码可读性</p>
+<h2 id="3-父级div定义-伪类-after-和-zoom"><a href="#3-父级div定义-伪类-after-和-zoom" class="headerlink" title="3. 父级div定义 伪类:after 和 zoom"></a>3. 父级div定义 伪类:after 和 zoom</h2><p>.clearfloat:after{display:block;clear:both;content:””;visibility:hidden;height:0}<br>.clearfloat{zoom:1}<br>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题<br>优点：浏览器支持好、不容易出现怪问题<br>缺点：代码多。<br>以上代码是现在大家用的比较多的清楚浮动的方法，推荐使用第三种，不仅兼容性好，而且效率高，还有些其他方法可以清楚浮动，但是与此产生的影响可能会更大，所以本篇不予推荐。</p>
+<hr>
+<p>cr.tanym</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/css-px-pt/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1062,165 +1221,6 @@
 </ul>
 <p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</p>
 <h2 id="REM"><a href="#REM" class="headerlink" title="REM"></a>REM</h2><p>em是CSS3新增的一个相对单位（root em，根em），使用rem为元素设定字体大小时，是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。下面就是一个例子：<br><code>p {font-size:14px; font-size:.875rem;}</code><br>注意： 你可以根据自身的需求决定你的单位属性，如果要考虑兼容性，可以使用px,或者两者同时使用。</p>
-<hr>
-<p>cr.tanym</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/clearfix/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tan y m">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/06/clearfix/" class="post-title-link" itemprop="url">清除浮动实现方式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-06 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-06T00:08:30+08:00">2017-03-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-05 10:18:01" itemprop="dateModified" datetime="2019-03-05T10:18:01+08:00">2019-03-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>为子元素设置浮动是开发过程中常出现的场景，在为子元素设置浮动的时候，会对他的父元素，以及前后元素产生一定的影响，比如：（1）背景不能显示 （2）边框不能撑开 （3）margin、padding等设置值不能正确显示。所以我们需要清除他的浮动，以下是清除浮动的部分方法</p>
-<h2 id="1-父级div定义-height"><a href="#1-父级div定义-height" class="headerlink" title="1. 父级div定义 height"></a>1. 父级div定义 height</h2><p>原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。<br>优点：简单、容易掌握<br>缺点：不推荐使用固定高度的元素，在适配过程中会产生很多问题，只适合高度固定的布局，要给出精确的高度。所以不推荐使用</p>
-<h2 id="2-结尾处加空div标签-clear-both"><a href="#2-结尾处加空div标签-clear-both" class="headerlink" title="2. 结尾处加空div标签 clear:both"></a>2. 结尾处加空div标签 clear:both</h2><p>.clear{clear:both}<br>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度<br>优点：简单、容易掌握、兼容性好<br>缺点：使用过程中，会添加很多空标签，影响效率，降低代码可读性</p>
-<h2 id="3-父级div定义-伪类-after-和-zoom"><a href="#3-父级div定义-伪类-after-和-zoom" class="headerlink" title="3. 父级div定义 伪类:after 和 zoom"></a>3. 父级div定义 伪类:after 和 zoom</h2><p>.clearfloat:after{display:block;clear:both;content:””;visibility:hidden;height:0}<br>.clearfloat{zoom:1}<br>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题<br>优点：浏览器支持好、不容易出现怪问题<br>缺点：代码多。<br>以上代码是现在大家用的比较多的清楚浮动的方法，推荐使用第三种，不仅兼容性好，而且效率高，还有些其他方法可以清楚浮动，但是与此产生的影响可能会更大，所以本篇不予推荐。</p>
 <hr>
 <p>cr.tanym</p>
 
