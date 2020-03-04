@@ -297,6 +297,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/http6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/10/24/http6/" class="post-title-link" itemprop="url">图解HTTP 第六章总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-10-24 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-24T00:00:00+08:00">2019-10-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-04 13:54:09" itemprop="dateModified" datetime="2020-03-04T13:54:09+08:00">2020-03-04</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HTTP首部（第六章）"><a href="#HTTP首部（第六章）" class="headerlink" title="HTTP首部（第六章）"></a>HTTP首部（第六章）</h1><p><br></p>
+<h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p>一台服务器可以托管多个域名。<br>在相同的IP地址下，虚拟主机可以寄存多个不同主机名和域名的网站，所以在发送HTTP请求时，必须在Host首部内指定完整的主机名和域名的URI。</p>
+<h3 id="6-1-Http报文首部"><a href="#6-1-Http报文首部" class="headerlink" title="6.1 Http报文首部"></a>6.1 Http报文首部</h3><p>HTTP请求报文<br>在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。<br>HTTP响应报文<br>在响应中，HTTP报文由HTTP版本、状态码、HTTP首部字段3部分构成。</p>
+<h3 id="6-2-Http首部字段"><a href="#6-2-Http首部字段" class="headerlink" title="6.2 Http首部字段"></a>6.2 Http首部字段</h3><p>使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。<br>首部字段由首部字段名和字段值构成，中间用冒号“:”分隔。<br>首部字段名 : 字段值</p>
+<p>4种HTTP首部字段类型</p>
+<ul>
+<li>通用首部字段<br>请求报文和响应报文两方都会使用的首部。</li>
+<li>请求首部字段<br>从客户端向服务器端发送请求报文时使用的首部。补充了请求的附加内容、客户端信息、响应内容相关优先级等信息。</li>
+<li>响应首部字段<br>从服务器向客户端返回响应报文时使用的首部。补充了响应的附加内容，也会要求客户端附加额外的内容信息。</li>
+<li>实体首部字段<br>针对请求报文和响应报文的实体部分使用的首部。补充了资源内容更新时间等与实体相关的信息。<h3 id="6-3-Http-1-1-通用首部字段"><a href="#6-3-Http-1-1-通用首部字段" class="headerlink" title="6.3 Http/1.1 通用首部字段"></a>6.3 Http/1.1 通用首部字段</h3><img src="/images/http/http-6-1.png" alt=""></li>
+</ul>
+<h3 id="6-4-请求首部字段"><a href="#6-4-请求首部字段" class="headerlink" title="6.4 请求首部字段"></a>6.4 请求首部字段</h3><p><img src="/images/http/http-6-2.png" alt=""></p>
+<h3 id="6-5响应首部字段"><a href="#6-5响应首部字段" class="headerlink" title="6.5响应首部字段"></a>6.5响应首部字段</h3><p><img src="/images/http/http-6-3.png" alt=""></p>
+<h3 id="6-6-实体首部字段"><a href="#6-6-实体首部字段" class="headerlink" title="6.6 实体首部字段"></a>6.6 实体首部字段</h3><p><img src="/images/http/http-6-4.png" alt=""></p>
+<h3 id="6-7-为Cookie服务的首部字段"><a href="#6-7-为Cookie服务的首部字段" class="headerlink" title="6.7 为Cookie服务的首部字段"></a>6.7 为Cookie服务的首部字段</h3><p><img src="/images/http/http-6-5.png" alt=""></p>
+<h3 id="6-8-其他首部字段"><a href="#6-8-其他首部字段" class="headerlink" title="6.8 其他首部字段"></a>6.8 其他首部字段</h3><p>HTTP首部字段是可以自行扩展的。所以在Web服务器和浏览器的应用上，会出现各种非标准的首部字段。</p>
+<ul>
+<li>X-Frame-Options 属于HTTP响应首部，用于控制网站内容在其他Web网站的Frame标签内的显示问题。其主要目的是为了防止点击劫持攻击。</li>
+<li>X-XSS-Protection 属于HTTP响应首部，它是针对跨站脚本攻击的一种对策，用于控制浏览器XSS防护机制的开关。<br>0将XSS过滤设置成无效状态 1.将XSS过滤设置成有效状态</li>
+<li>DNT 属于HTTP请求首部，其中DNT是Do Not Track的简称，意为拒绝个人信息被收集，是表示拒绝被精准广告追踪的一种方法。<br>0同意被追踪1.拒绝被追踪</li>
+<li>P3P 属于HTTP相应首部，通过利用P3P技术，可以让Web网站上的个人隐私变成一种仅供程序可理解的形式，以达到保护用户隐私的目的。</li>
+</ul>
+<hr>
+<p>cr.tanym</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/http5/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1805,168 +1982,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/get_post/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tan y m">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/22/get_post/" class="post-title-link" itemprop="url">GET和POST请求的区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-22 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-22T00:08:30+08:00">2017-03-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-19 11:30:31" itemprop="dateModified" datetime="2019-02-19T11:30:31+08:00">2019-02-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>开发过程中，GET和POST方法我们会经常使用到，那么它们到底有什么不同呢？</p>
-<ol>
-<li>GET使用URL或cookie传参，而POST将数据放在BODY中。</li>
-<li>GET的URL会有长度上的限制，而POST的数据几乎无限制。</li>
-<li>POSTt相对GET更加安全，因为在数据地址栏内不可见。</li>
-<li>GET请求的参数会保存在浏览器历史记录中。</li>
-</ol>
-<hr>
-<p>cr.tanym</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2014,7 +2029,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
