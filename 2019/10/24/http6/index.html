@@ -104,22 +104,22 @@
 
 
 
-  <meta name="description" content="HTTP首部（第六章） 5.1 用单台虚拟主机实现多个域名一台服务器可以托管多个域名。在相同的IP地址下，虚拟主机可以寄存多个不同主机名和域名的网站，所以在发送HTTP请求时，必须在Host首部内指定完整的主机名和域名的URI。 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版">
+  <meta name="description" content="HTTP首部（第六章） 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版本、状态码、HTTP首部字段3部分构成。 6.2 Http首部字段使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。首部字段由首部字段名和字段值构成，中间用冒号“:”分隔。首">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解HTTP 第六章总结">
 <meta property="og:url" content="http://yoursite.com/2019/10/24/http6/index.html">
 <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-<meta property="og:description" content="HTTP首部（第六章） 5.1 用单台虚拟主机实现多个域名一台服务器可以托管多个域名。在相同的IP地址下，虚拟主机可以寄存多个不同主机名和域名的网站，所以在发送HTTP请求时，必须在Host首部内指定完整的主机名和域名的URI。 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版">
+<meta property="og:description" content="HTTP首部（第六章） 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版本、状态码、HTTP首部字段3部分构成。 6.2 Http首部字段使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。首部字段由首部字段名和字段值构成，中间用冒号“:”分隔。首">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/http/http-6-1.png">
 <meta property="og:image" content="http://yoursite.com/images/http/http-6-2.png">
 <meta property="og:image" content="http://yoursite.com/images/http/http-6-3.png">
 <meta property="og:image" content="http://yoursite.com/images/http/http-6-4.png">
 <meta property="og:image" content="http://yoursite.com/images/http/http-6-5.png">
-<meta property="og:updated_time" content="2020-03-04T05:58:39.144Z">
+<meta property="og:updated_time" content="2020-03-05T14:59:13.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解HTTP 第六章总结">
-<meta name="twitter:description" content="HTTP首部（第六章） 5.1 用单台虚拟主机实现多个域名一台服务器可以托管多个域名。在相同的IP地址下，虚拟主机可以寄存多个不同主机名和域名的网站，所以在发送HTTP请求时，必须在Host首部内指定完整的主机名和域名的URI。 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版">
+<meta name="twitter:description" content="HTTP首部（第六章） 6.1 Http报文首部HTTP请求报文在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。HTTP响应报文在响应中，HTTP报文由HTTP版本、状态码、HTTP首部字段3部分构成。 6.2 Http首部字段使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。首部字段由首部字段名和字段值构成，中间用冒号“:”分隔。首">
 <meta name="twitter:image" content="http://yoursite.com/images/http/http-6-1.png">
 
 
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-04 13:58:39" itemprop="dateModified" datetime="2020-03-04T13:58:39+08:00">2020-03-04</time>
+                <time title="Modified: 2020-03-05 22:59:13" itemprop="dateModified" datetime="2020-03-05T22:59:13+08:00">2020-03-05</time>
               
             
           </span>
@@ -400,7 +400,6 @@
 
       
         <h1 id="HTTP首部（第六章）"><a href="#HTTP首部（第六章）" class="headerlink" title="HTTP首部（第六章）"></a>HTTP首部（第六章）</h1><p><br></p>
-<h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p>一台服务器可以托管多个域名。<br>在相同的IP地址下，虚拟主机可以寄存多个不同主机名和域名的网站，所以在发送HTTP请求时，必须在Host首部内指定完整的主机名和域名的URI。</p>
 <h3 id="6-1-Http报文首部"><a href="#6-1-Http报文首部" class="headerlink" title="6.1 Http报文首部"></a>6.1 Http报文首部</h3><p>HTTP请求报文<br>在请求中，HTTP报文由方法、URI、HTTP版本、HTTP首部字段等部分构成。<br>HTTP响应报文<br>在响应中，HTTP报文由HTTP版本、状态码、HTTP首部字段3部分构成。</p>
 <h3 id="6-2-Http首部字段"><a href="#6-2-Http首部字段" class="headerlink" title="6.2 Http首部字段"></a>6.2 Http首部字段</h3><p>使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。<br>首部字段由首部字段名和字段值构成，中间用冒号“:”分隔。<br>首部字段名 : 字段值</p>
 <p>4种HTTP首部字段类型</p>
@@ -462,6 +461,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/01/http7/" rel="prev" title="图解HTTP 第七章总结">
+                图解HTTP 第七章总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +534,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -571,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP首部（第六章）"><span class="nav-number">1.</span> <span class="nav-text">HTTP首部（第六章）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-用单台虚拟主机实现多个域名"><span class="nav-number">1.0.1.</span> <span class="nav-text">5.1 用单台虚拟主机实现多个域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Http报文首部"><span class="nav-number">1.0.2.</span> <span class="nav-text">6.1 Http报文首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Http首部字段"><span class="nav-number">1.0.3.</span> <span class="nav-text">6.2 Http首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Http-1-1-通用首部字段"><span class="nav-number">1.0.4.</span> <span class="nav-text">6.3 Http/1.1 通用首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-请求首部字段"><span class="nav-number">1.0.5.</span> <span class="nav-text">6.4 请求首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5响应首部字段"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.5响应首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-实体首部字段"><span class="nav-number">1.0.7.</span> <span class="nav-text">6.6 实体首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-为Cookie服务的首部字段"><span class="nav-number">1.0.8.</span> <span class="nav-text">6.7 为Cookie服务的首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-8-其他首部字段"><span class="nav-number">1.0.9.</span> <span class="nav-text">6.8 其他首部字段</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP首部（第六章）"><span class="nav-number">1.</span> <span class="nav-text">HTTP首部（第六章）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Http报文首部"><span class="nav-number">1.0.1.</span> <span class="nav-text">6.1 Http报文首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Http首部字段"><span class="nav-number">1.0.2.</span> <span class="nav-text">6.2 Http首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Http-1-1-通用首部字段"><span class="nav-number">1.0.3.</span> <span class="nav-text">6.3 Http/1.1 通用首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-请求首部字段"><span class="nav-number">1.0.4.</span> <span class="nav-text">6.4 请求首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5响应首部字段"><span class="nav-number">1.0.5.</span> <span class="nav-text">6.5响应首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-实体首部字段"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.6 实体首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-为Cookie服务的首部字段"><span class="nav-number">1.0.7.</span> <span class="nav-text">6.7 为Cookie服务的首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-8-其他首部字段"><span class="nav-number">1.0.8.</span> <span class="nav-text">6.8 其他首部字段</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="确保web安全的HTTPS(第七章) 7.1 http的缺点主要有以下不足：  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能已遭篡改  7.1.1 通信使用明文可能会被窃听由于 HTTP 本身不具备加密的功能，所以也无法做到对通信整体（使用 HTTP 协议通信的请求和响应的内容）进行加密。即 HTTP 报文使用明文（指未经过加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解HTTP 第七章总结">
+<meta property="og:url" content="http://yoursite.com/2019/11/01/http7/index.html">
+<meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+<meta property="og:description" content="确保web安全的HTTPS(第七章) 7.1 http的缺点主要有以下不足：  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能已遭篡改  7.1.1 通信使用明文可能会被窃听由于 HTTP 本身不具备加密的功能，所以也无法做到对通信整体（使用 HTTP 协议通信的请求和响应的内容）进行加密。即 HTTP 报文使用明文（指未经过加密">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-1.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-2.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-3.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-4.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-5.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-6.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-7.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-8.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-9.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-10.png">
+<meta property="og:image" content="http://yoursite.com/images/http/http-7-11.png">
+<meta property="og:updated_time" content="2020-03-05T15:08:56.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图解HTTP 第七章总结">
+<meta name="twitter:description" content="确保web安全的HTTPS(第七章) 7.1 http的缺点主要有以下不足：  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能已遭篡改  7.1.1 通信使用明文可能会被窃听由于 HTTP 本身不具备加密的功能，所以也无法做到对通信整体（使用 HTTP 协议通信的请求和响应的内容）进行加密。即 HTTP 报文使用明文（指未经过加密">
+<meta name="twitter:image" content="http://yoursite.com/images/http/http-7-1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/01/http7/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>图解HTTP 第七章总结 | 小 T a n g？ 爱生活～～～</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小 T a n g？ 爱生活～～～</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">青山一道同云雨，明月何曾是两乡。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/http7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tan y m">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图解HTTP 第七章总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T00:00:00+08:00">2019-11-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-05 23:08:56" itemprop="dateModified" datetime="2020-03-05T23:08:56+08:00">2020-03-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="确保web安全的HTTPS-第七章"><a href="#确保web安全的HTTPS-第七章" class="headerlink" title="确保web安全的HTTPS(第七章)"></a>确保web安全的HTTPS(第七章)</h1><p><br></p>
+<h3 id="7-1-http的缺点"><a href="#7-1-http的缺点" class="headerlink" title="7.1 http的缺点"></a>7.1 http的缺点</h3><p>主要有以下不足：</p>
+<ul>
+<li>通信使用明文（不加密），内容可能会被窃听</li>
+<li>不验证通信方的身份，因此有可能遭遇伪装</li>
+<li>无法证明报文的完整性，所以有可能已遭篡改</li>
+</ul>
+<h4 id="7-1-1-通信使用明文可能会被窃听"><a href="#7-1-1-通信使用明文可能会被窃听" class="headerlink" title="7.1.1 通信使用明文可能会被窃听"></a>7.1.1 通信使用明文可能会被窃听</h4><p>由于 HTTP 本身不具备加密的功能，所以也无法做到对通信整体（使用 HTTP 协议通信的请求和响应的内容）进行加密。即 HTTP 报文使用明文（指未经过加密的报文）方式发送 。</p>
+<ul>
+<li>TCP/IP 是可能被窃听的网络</li>
+<li>按照 TCP/IP 协议族的工作机制，通信内容在所有的通信线路上都有可能遭到窥视。</li>
+<li>加密处理防止被窃听</li>
+<li>通信的加密</li>
+<li>HTTP 协议中没有加密机制，但可以通过和 SSL（Secure Socket Layer，安全套接层） 或 TLS（Transport Layer Security，安全层传输协议） 的组合使用，加密 HTTP 通信的内容。</li>
+<li>用 SSL 建立安全通信线路之后，就可以在这条通信线路 上进行 HTTP 通信。与 SSL 组合使用的 HTPP 被称为 HTTPS （HTTP Secure ，超文本传输安全协议）</li>
+<li>内容的加密</li>
+<li>将参与通信的内容本身加密，即把 HTTP 报文里所包含的内容进行加密处理</li>
+<li>客户端需要对 HTTP 报文进行加密处理后再发送请求<h4 id="7-1-2-不验证同新方的身份就可能遭遇伪装"><a href="#7-1-2-不验证同新方的身份就可能遭遇伪装" class="headerlink" title="7.1.2 不验证同新方的身份就可能遭遇伪装"></a>7.1.2 不验证同新方的身份就可能遭遇伪装</h4>任何人都可以发送请求</li>
+</ul>
+<p><img src="/images/http/http-7-1.png" alt=""></p>
+<p>不确认通信方，会存在以下各种隐患：</p>
+<ul>
+<li>无法确定请求发送至目标的 Web 服务器，是否是按照真实意图返回响应的服务器</li>
+<li>无法确定响应返回到的客户端，是否是按真实意图接受响应的那个客户端</li>
+<li>无法确定正在通信的双方是否具备访问权限</li>
+<li>无法判定请求来自何方，出自谁手</li>
+<li>即使是无意义的请求也会照单接受</li>
+<li>查明对手的证书<br>使用 HTTP 协议无法确定通信方，使用 SSL 则可以。SSL 不仅提供加密处理，而且还使用了一种被称为证书的手段，可用于确定方<br>确认通信方（服务器或客户端）持有的证书，即可判断通信方的真实意图<br><img src="/images/http/http-7-2.png" alt=""></li>
+</ul>
+<p>客户端持有证书即可完成个人身份的确认，也可用于对 Web 网站的认证环节</p>
+<p>在http协议通信时，由于不存在通信方的处理步骤，任何人都可以发送请求</p>
+<h4 id="7-1-3-无法证明报文的完整性，可能已遭篡改"><a href="#7-1-3-无法证明报文的完整性，可能已遭篡改" class="headerlink" title="7.1.3 无法证明报文的完整性，可能已遭篡改"></a>7.1.3 无法证明报文的完整性，可能已遭篡改</h4><p>所谓完整性是指信息的准确度。若无法证明其完整性，通常也就意味着无法判断信息是否准确</p>
+<ul>
+<li>接受到的内容可能有误<br>由于 HTTP 协议无法证明通信报文的完整性，所有没有任何办法确认，发出的请求/响应和接受到的请求/响应时前后相同的<br><img src="/images/http/http-7-3.png" alt=""></li>
+</ul>
+<p>请求或响应在传输途中，遭攻击者拦截并篡改内容的改变称为中间人攻击（Main-in-the-Middle-attack，MITM）<br><img src="/images/http/http-7-4.png" alt=""></p>
+<ul>
+<li>如何防止篡改<br>使用 https，ssl提供认证和加密处理及摘要功能</li>
+</ul>
+<h3 id="7-2-http-加密-认证-完整性保护"><a href="#7-2-http-加密-认证-完整性保护" class="headerlink" title="7.2 http+加密+认证+完整性保护"></a>7.2 http+加密+认证+完整性保护</h3><h4 id="7-2-1-http加上加密处理和认证以及完整性保护后即是https"><a href="#7-2-1-http加上加密处理和认证以及完整性保护后即是https" class="headerlink" title="7.2.1 http加上加密处理和认证以及完整性保护后即是https"></a>7.2.1 http加上加密处理和认证以及完整性保护后即是https</h4><p><img src="/images/http/http-7-5.png" alt=""></p>
+<h4 id="7-2-2-https是身披ssl外壳的http"><a href="#7-2-2-https是身披ssl外壳的http" class="headerlink" title="7.2.2 https是身披ssl外壳的http"></a>7.2.2 https是身披ssl外壳的http</h4><p>HTTPS 并非是应用层的一种协议。只是 HTTP 通信接口部分采用 SSL （Secure Socket Layer）和 TSL（Transport Layer Security） 协议代替而已<br><img src="/images/http/http-7-6.png" alt=""></p>
+<h4 id="7-2-3-相互交换密钥的公开密钥加密技术"><a href="#7-2-3-相互交换密钥的公开密钥加密技术" class="headerlink" title="7.2.3 相互交换密钥的公开密钥加密技术"></a>7.2.3 相互交换密钥的公开密钥加密技术</h4><p>SSL 采用一种叫做公开密钥加密（Public-key cryptography）的加密处理方式<br>近代的加密方法中加密算法是公开的，而密钥却是保密的。通过这种方式得以保持加密方法的安全性<br>加密和解密都会用到密钥，没有密钥就无法对密码解密</p>
+<ul>
+<li>共享密钥加密的困境<br>加密和解密同用一个密钥的方式称为共享密钥加密（Common key crypto system），也被叫做对称密钥加密<br><img src="/images/http/http-7-7.png" alt=""></li>
+</ul>
+<p>以共享密钥加密时必须将密钥也发送给对方<br><img src="/images/http/http-7-8.png" alt=""></p>
+<ul>
+<li><p>使用两把密钥的公开密钥加密<br>公开密钥的加密方式很好的解决了共享密钥加密的困难<br>公开密钥加密使用一对非对称的密钥。一把叫做私有密钥（private key），一把叫做公开密钥（public key）<br>使用公开密钥加密时，发送密文的一方使用对方的公开密钥进行加密处理，对方收到被加密的信息后，再使用自己的私有密钥进行解密<br><img src="/images/http/http-7-9.png" alt=""></p>
+</li>
+<li><p>HTTPS 采用混合加密机制<br>HTTPS 采用共享密钥加密和公开密钥加密两者并用的混合加密机制<br>在交换密钥环节使用公开密钥加密方式，之后的建立通信交换报文阶段则使用共享密钥加密方式<br><img src="/images/http/http-7-10.png" alt=""></p>
+</li>
+</ul>
+<h4 id="7-2-4-证明公开密钥正确性的证书"><a href="#7-2-4-证明公开密钥正确性的证书" class="headerlink" title="7.2.4 证明公开密钥正确性的证书"></a>7.2.4 证明公开密钥正确性的证书</h4><p>公开密钥加密方式无法证明公开密钥本身就是货真价实的公开密钥<br>使用数字证书认证机构和其相关机关颁发的公开密钥证书可解决上述问题</p>
+<ul>
+<li>可证明组织真实性的 EV SSL 证书</li>
+<li>证书的一个作用是用来证明作为通信一方的服务器是否规范，另外一个作用是确认对方服务器背后运营的企业是否真实存在。拥有该特性的证书是 EV SSL（Extended Validation SSL Certificate） 证书</li>
+<li>用以确认客户端的客户端证书</li>
+<li>HTTPS 中还可以使用客户端证书。以客户端证书进行客户端认证，证明服务器正在通信的对方始终是预料之内的客户端，其作用跟服务器证书如出一辙</li>
+<li>客户端证书只能用来证明客户端实际存在，而不能用来证明用户本人的真实有效性</li>
+<li>认证机构信誉第一</li>
+<li>SSL 机制中介入认证机构之所以可行，是因为建立其信用绝对可靠这一前提下的</li>
+<li>由自认证机构颁发的证书称为自签名证书</li>
+<li>独立构建的认证机构叫做自认证机构，由自认证机构颁发的 无用 证书也被戏称为自签名证书<br>浏览器访问该服务器时，会显示 无法确认连接安全性 或 该网站的安全证书存在问题 等警告信息<h4 id="7-2-5-https的安全通信机制"><a href="#7-2-5-https的安全通信机制" class="headerlink" title="7.2.5 https的安全通信机制"></a>7.2.5 https的安全通信机制</h4>HTTPS 通信步骤<br><img src="/images/http/http-7-11.png" alt=""></li>
+</ul>
+<ol>
+<li>客户端通过发送 Client Hello 报文开始 SSL 通信</li>
+<li>服务器可进行 SSL通信时，会以 Server Hello 报文作为响应</li>
+<li>之后服务器发送 Certificate 报文，报文中包含公开密钥证书</li>
+<li>最后服务器发送 Server Hello Done 报文通知客户端，最初阶段的 SSL 握手协商部分结束</li>
+<li>SSL 第一次握手结束之后，客户端以 Client Key Exchange 报文作为回应</li>
+<li>接着客户端继续发送 Client Cipher Spec 报文</li>
+<li>客户端发送 Finished 报文，该报文包含连接至今全部报文的整体校验值</li>
+<li>服务器同样发送 Client Cipher Spec 报文</li>
+<li>服务器同样发送 Finished 报文</li>
+<li>服务器和客户端的 Finished 报文交换完毕之后，SSL 连接就算建立完成</li>
+<li>应用层协议通信，即发送 HTTP 响应</li>
+<li>最后客户端断开连接，断开连接时，发送 close_notify 报文</li>
+</ol>
+<p>在以上流程中，应用层发送数据时会附加一种叫做 MAC 的报文摘要。MAC 能够查知报文是否遭到篡改，从而保护报文的完整性</p>
+<hr>
+<p>cr.tanym</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/24/http6/" rel="next" title="图解HTTP 第六章总结">
+                <i class="fa fa-chevron-left"></i> 图解HTTP 第六章总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tan y m</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#确保web安全的HTTPS-第七章"><span class="nav-number">1.</span> <span class="nav-text">确保web安全的HTTPS(第七章)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-http的缺点"><span class="nav-number">1.0.1.</span> <span class="nav-text">7.1 http的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-1-通信使用明文可能会被窃听"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">7.1.1 通信使用明文可能会被窃听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-2-不验证同新方的身份就可能遭遇伪装"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">7.1.2 不验证同新方的身份就可能遭遇伪装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-3-无法证明报文的完整性，可能已遭篡改"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">7.1.3 无法证明报文的完整性，可能已遭篡改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-http-加密-认证-完整性保护"><span class="nav-number">1.0.2.</span> <span class="nav-text">7.2 http+加密+认证+完整性保护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-1-http加上加密处理和认证以及完整性保护后即是https"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">7.2.1 http加上加密处理和认证以及完整性保护后即是https</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-2-https是身披ssl外壳的http"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">7.2.2 https是身披ssl外壳的http</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-3-相互交换密钥的公开密钥加密技术"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">7.2.3 相互交换密钥的公开密钥加密技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-4-证明公开密钥正确性的证书"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">7.2.4 证明公开密钥正确性的证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-5-https的安全通信机制"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">7.2.5 https的安全通信机制</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tan y m</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
