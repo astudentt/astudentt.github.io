@@ -1,399 +1,114 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="git 常用语句">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
   
 
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
 
-
-
-  <meta name="description" content="git官网：https://git-scm.com/git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念">
-<meta property="og:type" content="article">
-<meta property="og:title" content="git 常用语句">
-<meta property="og:url" content="http://yoursite.com/2017/03/14/git-regular/index.html">
-<meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-<meta property="og:description" content="git官网：https://git-scm.com/git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-04T08:12:11.696Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 常用语句">
-<meta name="twitter:description" content="git官网：https://git-scm.com/git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念">
-
-
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/03/14/git-regular/">
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>git 常用语句 | 小 T a n g？ 爱生活～～～</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
   
+  <link rel="stylesheet" href="/css/style.light.css">
 
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion .logo-line-before i { left: initial; }
-    .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+  <!-- Google Analytics -->
+  
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">小 T a n g？ 爱生活～～～</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-      
-        <p class="site-subtitle">青山一道同云雨，明月何曾是两乡。</p>
-      
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+  <body>
+    <!-- Page Header -->
 
 
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/git-regular/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tan y m">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小 T a n g？ 爱生活～～～">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">git 常用语句
-
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-03-14 00:08:30" itemprop="dateCreated datePublished" datetime="2017-03-14T00:08:30+08:00">2017-03-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-04 16:12:11" itemprop="dateModified" datetime="2019-01-04T16:12:11+08:00">2019-01-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">git 常用语句</p>
+          <p class="subtitle"></p>
         </div>
-      </header>
-    
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-03-14</span>
+            <span class="time">00:32:55</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
 <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
 <li>git log<br>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</li>
 <li>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
@@ -410,349 +125,42 @@
 <hr>
 <p>cr.tanym</p>
 
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/03/07/jquery-event-delegation/" rel="next" title="jQuery 事件委托总结">
-                <i class="fa fa-chevron-left"></i> jQuery 事件委托总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/ios-default-style/" rel="prev" title="ios默认样式去除">
-                ios默认样式去除 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
         </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      </div>
     </div>
   </div>
+</article>
 
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">tan y m</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
       </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#git官网：https-git-scm-com"><span class="nav-number">1.</span> <span class="nav-text">git官网：https://git-scm.com/</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">tan y m</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.6.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
   </div>
+</footer>
 
-  
 
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=6.6.0"></script>
-
-  <script src="/js/src/motion.js?v=6.6.0"></script>
-
-
-
-  
-  
-
-  
-  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script src="/js/src/post-details.js?v=6.6.0"></script>
-
-
-
-  
-
-
-  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+
