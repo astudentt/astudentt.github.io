@@ -100,15 +100,29 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-14</span>
-            <span class="time">00:32:55</span>
+            <span class="time">20:59:54</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/git/">git</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/git/">#git</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。</p>
+          <h4 id="git官网：https-git-scm-com"><a href="#git官网：https-git-scm-com" class="headerlink" title="git官网：https://git-scm.com/"></a>git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></h4><p>git是linux开发团队开发的一个分布式版本控制系统，它与CVS及SVN这种集中式的版本控制系统不同，集中式版本控制系统的版本库是集中存放在中央服务器的，在开发过程中需要先将服务器上的最新版本拉取到本地，在本地开发完再传到中央服务器，这就会产生一些问题，比如你需要联网工作，从中央服务器拉取时会耗费很多时间，而分布式则不同，它没有中央服务器的概念，每个电脑都是一个服务器，每个人的电脑都有一个完整的版本库。所以你可以在未联网的情况下工作，同样的每个电脑都有一个完整的版本库，它的安全性也大大提高，不会像集中式的如果中央服务器产生问题，会影响到整个开发的进程。分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家可以工作，只是交换修改不方便而已。<br><a id="more"></a></p>
 <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
 <li>git log<br>commit feebf8e6d873b6fdc557761c93e1e40ed27ab2fb<br>Author: astudentt<br>Date: Tue Mar 14 10:50:23 2017 +0800<br>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</li>
 <li>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>

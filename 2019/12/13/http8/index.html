@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="图解HTTP 第八章总结">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">图解HTTP 第八章总结</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-12-13</span>
+            <span class="time">20:59:53</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/http/">http</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/http/">#http</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>某些web页面需要对特定人员群体进行浏览限制，为达到此等目标，认证功能必不可少。<br><a id="more"></a></p>
+<h1 id="确认访问用户身份的认证（第8章）"><a href="#确认访问用户身份的认证（第8章）" class="headerlink" title="确认访问用户身份的认证（第8章）"></a>确认访问用户身份的认证（第8章）</h1><p><br></p>
+<h3 id="8-1-何为认证"><a href="#8-1-何为认证" class="headerlink" title="8.1 何为认证"></a>8.1 何为认证</h3><p>认证通常需要核对的信息指的是：</p>
+<ul>
+<li>密码：只有本人才会知道的字符串信息</li>
+<li>动图令牌：仅限本人持有的设备内显示的一次性密码</li>
+<li>数字证书：仅限本人（终端）持有的信息</li>
+<li>生物认证：指纹和虹膜等本人的生理信息</li>
+<li>IC 卡等：仅限本人持有的信息</li>
+</ul>
+<p>Http/1.0使用的认证方式</p>
+<ul>
+<li>BASIC 认证（基本认证）</li>
+<li>DIGEST 认证（摘要认证）</li>
+<li>SSL 客户端认证</li>
+<li>FormBase 认证（基于表单认证）<h3 id="8-2-Basic-认证"><a href="#8-2-Basic-认证" class="headerlink" title="8.2 Basic 认证"></a>8.2 Basic 认证</h3></li>
+</ul>
+<p>Basic认证的步骤：</p>
+<p><img src="/images/http/http-8-1.png" alt=""></p>
+<ol>
+<li>当请求的资源需要 BASIC 认证时，服务器会随状态码 401 Authorization Required，返回带 WWW-Authenticate 首部字段的响应。该字段包含认证的方式（BASIC）及 Request-URI 安全域字符串（realm）。</li>
+<li>接受到状态码 401 的客户端为了通过 BASIC 认证，需要将用户 ID 和密码经过 Base64 编码处理后发送给服务器。</li>
+<li>接受到包含首部字段 Authorization 请求的服务器，会对认证信息的正确性进行验证。如验证通过，则返回一条包含 Request-URI 资源的响应。<br>BASIC 认证使用上不够便捷灵活，且达不到多数 Web 网站期望的安全性等级，因此并不常用。</li>
+</ol>
+<h3 id="8-3-Digest认证"><a href="#8-3-Digest认证" class="headerlink" title="8.3 Digest认证"></a>8.3 Digest认证</h3><p>DIGEST 认证同样使用质询/响应的方式（challenge/response），但不会像 BASIC 认证那样直接发送明文密码。<br>质询响应方式是指，一开始一方会先发送认证要求给另一方，接着使用从另一方接受到的质询码计算生成响应码，最后将响应码返回给对方进行认证的方式。<br><img src="/images/http/http-8-2.png" alt=""></p>
+<p>因为发送给对方只是响应摘要及由质询码产生的计算结果，所以比起 BASIC 认证，密码泄漏的可能性就降低了。<br><img src="/images/http/http-8-3.png" alt=""></p>
+<p>DIGEST 认证步骤</p>
+<ol>
+<li>请求需要认证的资源时，服务器会随状态码 401 Authorization Required，返回带 WWW-Authenticate 首部字段的响应。该字段内包含质问响应方式认证所需的临时质询码（随机数，nonce）。</li>
+<li>首部字段 WWW-Authenticate 内必须包含 realm 和 nonce 这两个字段的信息。客户端就是依靠向服务器回送这两个值进行认证的。</li>
+<li>接收到 401 状态码的客户端，返回的响应中包含 DIGEST 认证必须的首部字段 Authorization 信息。</li>
+<li>接受到包含首部字段 Authorization 请求的服务器，会确认认证信息的正确性。认证通过后则返回包含 Request-URI 资源的响应。<br>DEGIST 认证提供了高于 BASIC 认证的安全等级，但是和 HTTPS 的客户端认证相比仍旧很弱，所以使用范围也有所受限</li>
+</ol>
+<h3 id="8-4-ssl-客户端认证"><a href="#8-4-ssl-客户端认证" class="headerlink" title="8.4 ssl 客户端认证"></a>8.4 ssl 客户端认证</h3><p>SSL 客户端认证是借由 HTTPS 的客户端证书完成认证的方式。凭借客户端证书认证，服务器可确认访问是否来已自登录的客户端。</p>
+<h4 id="8-4-1-ssl客户端认证的认证步骤"><a href="#8-4-1-ssl客户端认证的认证步骤" class="headerlink" title="8.4.1 ssl客户端认证的认证步骤"></a>8.4.1 ssl客户端认证的认证步骤</h4><p>为达到 SSL 客户端认证的目的，需要事先将客户端证书发送给客户端，且客户端必须安装此证书</p>
+<ol>
+<li>接收到需要认证资源的请求，服务器会发送 Certificate Request 报文，要求客户端提供客户端证书。</li>
+<li><p>用户选择将发送的客户端证书后，客户端会把客户端证书信息以 Client Certificate 报文方式发送给服务器。<br><img src="/images/http/http-8-4.png" alt=""></p>
+</li>
+<li><p>服务器验证客户端证书，验证通过后方可领取证书内客户端的公开密钥，然后开始 HTTPS 加密通信。</p>
+</li>
+</ol>
+<h4 id="8-4-2-ssl客户端认证采用双因素认证"><a href="#8-4-2-ssl客户端认证采用双因素认证" class="headerlink" title="8.4.2 ssl客户端认证采用双因素认证"></a>8.4.2 ssl客户端认证采用双因素认证</h4><p>在多数情况下，SSL 客户端认证不会仅依靠证书完成认证，一般会和基于表单认证组合形成一种双因素认证来使用。<br>双因素认证是指，认证过程不仅需要密码这一个因素，还需要申请认证者提供其他持有信息，从而作为另一个因素，与其组合使用的认证方式。</p>
+<h4 id="8-4-3-ssl客户端认证必要的费用"><a href="#8-4-3-ssl客户端认证必要的费用" class="headerlink" title="8.4.3 ssl客户端认证必要的费用"></a>8.4.3 ssl客户端认证必要的费用</h4><p>使用 SSL 客户端认证需要用到客户端证书，而客户端证书需要支付一定费用才能使用。</p>
+<h3 id="8-5-基于表单认证"><a href="#8-5-基于表单认证" class="headerlink" title="8.5 基于表单认证"></a>8.5 基于表单认证</h3><p>基于表单的认证方法并不是在 HTTP 协议中定义的，客户端会向服务器上的 Web 应用程序发送登录信息（Credential），按登录信息的验证结果认证。</p>
+<h4 id="8-5-1认证多半为基于表单认证"><a href="#8-5-1认证多半为基于表单认证" class="headerlink" title="8.5.1认证多半为基于表单认证"></a>8.5.1认证多半为基于表单认证</h4><p>对于 Web 网站的认证功能，能够满足其安全使用级别的标准规范并不存在，所以只好使用由 Web 应用程序各自实现基于表单的认证方式。<br><img src="/images/http/http-8-5.png" alt=""></p>
+<h4 id="8-5-2-session管理及cookie应用"><a href="#8-5-2-session管理及cookie应用" class="headerlink" title="8.5.2 session管理及cookie应用"></a>8.5.2 session管理及cookie应用</h4><p>基于表单认证的标准规范尚未由定论，一般会使用 Cookie 来管理 Session。<br>基于表单认证本身是通过服务器端的 Web 应用，将客户端发送过来的用户 ID 和密码与之前登录过的信息做匹配来认证。<br>使用 Cookie 来管理 Session，来弥补 HTTP 协议中不存在的状态管理功能。<br><img src="/images/http/http-8-6.png" alt=""></p>
+<ol>
+<li>客户端把用户 ID 和密码等登录信息放入报文的实体部分，通常是以 POST 方法把请求发送给服务器。而这时，会使用 HTTS 通信来进行 HTML 表单表面的显示和用户输入数据的发送</li>
+<li>服务器会发放用以识别用户的 Session ID。通过验证从客户端发送过来的登录信息进行身份验证，然后把用户的认证状态与 Session ID 绑定后记录在服务器端。</li>
+<li>客户端接收到从服务器端发来的 Session ID 后，会将其作为 Cookie 保存在本地。下次向服务器发送请求时，浏览器会自动发送 Cookie，所以 Session ID 也随之发送到服务器。服务器可通过验证接受到的 Session ID 识别用户和其认证状态。</li>
+</ol>
+<hr>
+<p>cr.tanym</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

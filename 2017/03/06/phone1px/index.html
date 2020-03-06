@@ -100,15 +100,29 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-06</span>
-            <span class="time">00:32:55</span>
+            <span class="time">20:59:54</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/css/">css</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/css/">#css</a> <a class="tag" href="/tags/ios/">#ios</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>移动端开发过程中，不可避免的会遇到1px的实现问题.那么这个1px是什么问题呢？我简单的说一下，移动端兼容过程中ios系统是很重要的一部分，retina屏幕 大家也应该有所了解， 1px变粗的原因呢就是：viewport的设置和屏幕物理分辨率是按比例而不是相同的. 移动端window对象有个devicePixelRatio属性, 它表示设备物理像素和css像素的比例, 在retina屏的iphone手机上, 这个值为2或3, css里写的1px长度映射到物理像素上就有2px或3px那么长.下面我们就说一下怎样实现1px像素。现在的实现方式有很多种，我们来列举一些</p>
+          <p>移动端开发过程中，不可避免的会遇到1px的实现问题.那么这个1px是什么问题呢？我简单的说一下，移动端兼容过程中ios系统是很重要的一部分，retina屏幕 大家也应该有所了解， 1px变粗的原因呢就是：viewport的设置和屏幕物理分辨率是按比例而不是相同的. 移动端window对象有个devicePixelRatio属性, 它表示设备物理像素和css像素的比例, 在retina屏的iphone手机上, 这个值为2或3, css里写的1px长度映射到物理像素上就有2px或3px那么长.下面我们就说一下怎样实现1px像素。现在的实现方式有很多种，我们来列举一些<br><a id="more"></a></p>
 <h2 id="1-ios-8-0以上支持小数点设置0-5px"><a href="#1-ios-8-0以上支持小数点设置0-5px" class="headerlink" title="1. ios 8.0以上支持小数点设置0.5px"></a>1. ios 8.0以上支持小数点设置0.5px</h2><p>IOS8下已经支持带小数的px值, 可以结合media query对应devicePixelRatio有个查询值-webkit-min-device-pixel-ratio, css可以写成这样<br>.hairline { border: 1px solid #999 }<br>@media screen and (-webkit-min-device-pixel-ratio: 2) {<br>.hairline { border: 0.5px solid #999 }<br>}<br>@media screen and (-webkit-min-device-pixel-ratio: 3) {<br>.hairline { border: 0.333333px solid #999 }<br>}<br>-webkit-min-device-pixel-ratio属性值可以判断现有设备的 值，对应的我讲相应样式设置为小数值即可满足需求，你也可以使用js判断，但是在ios7及安卓系统中0.5px会被识别为0px显示。以下代码是识别ios8+的js判断实现：<br>if (/iP(hone|od|ad)/.test(navigator.userAgent)) {<br>var v = (navigator.appVersion).match(/OS (\d+)(\d+)?(\d+)?/),<br>version = parseInt(v[1], 10);<br>if(version &gt;= 8){<br>document.documentElement.classList.add(‘hairlines’)<br>}<br>}</p>
 <h2 id="2-transform-scale-0-5"><a href="#2-transform-scale-0-5" class="headerlink" title="2. transform: scale(0.5)"></a>2. transform: scale(0.5)</h2><p>伪类+transform是比较完美的方法了。原理是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。<br>单条border样式设置：<br>.hairline{<br>position: relative;<br>border:none;<br>}<br>.hairline:after{<br>content: ‘’;<br>position: absolute;<br>bottom: 0;<br>background: #000;<br>width: 100%;<br>height: 1px;<br>-webkit-transform: scaleY(0.5);<br>transform: scaleY(0.5);<br>-webkit-transform-origin: 0 0;<br>transform-origin: 0 0;<br>}<br>样式使用的时候，也要结合 JS 代码，判断是否 Retina 屏<br>if(window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2){<br>document.documentElement.classList.add(‘hairlines’)<br>}</p>
 <h2 id="3-viewport-rem"><a href="#3-viewport-rem" class="headerlink" title="3. viewport + rem"></a>3. viewport + rem</h2><p>在devicePixelRatio = 2时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no”&gt;<br>在devicePixelRatio = 3时，输出 viewport<br>&lt; meta name=”viewport” content=”initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no”&gt;<br>同时通过设置对应 viewport 的 rem 基准值,就可以实现了。</p>

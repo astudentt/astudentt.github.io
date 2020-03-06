@@ -100,15 +100,31 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-04-18</span>
-            <span class="time">00:32:55</span>
+            <span class="time">20:59:54</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/hexo/">hexo</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/hexo/">#hexo</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          <h2 id="错误如下："><a href="#错误如下：" class="headerlink" title="错误如下："></a>错误如下：</h2><p>fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">http://hexo.io/docs/troubleshooting.html</a><br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)<br>FATAL fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</p>
+          <pre><code>hexo 小问题解决方法。
+&lt;!-- more --&gt;
+</code></pre><h2 id="错误如下："><a href="#错误如下：" class="headerlink" title="错误如下："></a>错误如下：</h2><p>fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">http://hexo.io/docs/troubleshooting.html</a><br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)<br>FATAL fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>Error: fatal: AggregateException encountered.<br>bash: /dev/tty: No such device or address<br>error: failed to execute prompt script (exit code 1)<br>fatal: could not read Username for ‘<a href="https://github.com‘" target="_blank" rel="noopener">https://github.com‘</a>: Invalid argument<br>at ChildProcess. (F:\workSpace\astudentt.github.io\node_modules.0.6.0@hexo-util\lib\spawn.js:37:17)<br>at emitTwo (events.js:106:13)<br>at ChildProcess.emit (events.js:191:7)<br>at ChildProcess.cp.emit (F:\workSpace\astudentt.github.io\node_modules.4.0.2@cross-spawn\lib\enoent.js:40:29)<br>at maybeClose (internal/child_process.js:877:16)<br>at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将https 改成 ssh即可。<br>现在我的 config.yml 如下所示：<br>deploy:<br>type: git<br>repo: ssh:<a href="mailto://git@github.com" target="_blank" rel="noopener">//git@github.com</a>/astudentt/astudentt.github.io<br>branch: master</p>
 <p>最后执行hexo deploy命令即可。</p>
 <hr>

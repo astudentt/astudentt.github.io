@@ -100,15 +100,29 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-20</span>
-            <span class="time">00:32:55</span>
+            <span class="time">20:59:54</span>
           </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/ios/">ios</a>
+</span>
           
         </div>
         <!-- Tags -->
         
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/ios/">#ios</a>
+
+
+          </div>
+        
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>ios默认对页面有独特的显示样式，如按钮圆角渐变等，但是开发是我们自己写的样式可能并不能接受它默认的样式，所以去除它是很必要。</p>
+          <p>ios默认对页面有独特的显示样式，如按钮圆角渐变等，但是开发是我们自己写的样式可能并不能接受它默认的样式，所以去除它是很必要。<br><a id="more"></a></p>
 <ol>
 <li>-webkit-appearance: none;<br>ios是webkit内核，所以在appearance前需要加-webkit来对其进行设置，<br>input[type=button]{<br>-webkit-appearance:none;<br>outline:none<br>}<br>上边代码段是对type为button的input控件设置appearance属性，所以ios手机上的button圆角等默认样式就消除了。</li>
 <li>ios手机会将它认为是手机号码的数字串，显示为默认的样式，并且设为拨号链接，可将telephone=no，则手机号码不被显示为拨号链接并且去除相关样式。</li>
