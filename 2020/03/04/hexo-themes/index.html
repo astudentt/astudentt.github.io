@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="tan y m">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="选择排序">
+  <meta property="og:title" content="如何更换hexo主题">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">选择排序</p>
+          <p class="title">如何更换hexo主题</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2017-05-24</span>
+            <span class="date">2020-03-04</span>
             <span class="time">19:54:11</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/Algorithm/">Algorithm</a>
+<a href="/categories/hexo/">hexo</a>
 </span>
           
         </div>
@@ -115,35 +115,25 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/js/">#js</a> <a class="tag" href="/tags/Algorithm/">#Algorithm</a>
+<a class="tag" href="/tags/hexo/">#hexo</a> <a class="tag" href="/tags/theme/">#theme</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>排名是我们经常遇到的问题，小的时候成绩排名，身高排名，各种排名。听歌曲时有各种各样的排行榜，那么如果让你做一个排行榜，你要怎样把杂乱无章的数据，变成人们能够准确判断的排行榜呢？那么你就需要用到排序算法了，排序算法有很多，选择排序、快速排序、冒泡排序等，此文章介绍的是简单易懂的选择排序法。选择排序是一种灵巧的排序方法，但是速度并不是很快，它的时间复杂度为O（n 2）<br><a id="more"></a></p>
+          <p>hexo 官网的主题非常多样，选择一个你喜欢的、能够突出你个性的主题也很重要哦，让我们试试更换hexo的主题吧～！<br><a id="more"></a></p>
+<p>hexo 官网主题部分网址：<br><a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br>我之前的主题是 next ，想要尝试下更换为 Aero-Dual，主题如下图：</p>
+<p><img src="/images/hexo/hexo-themes.png" alt=""></p>
+<p>点击主题名称，进入它的github项目主页<br><a href="https://github.com/levblanc/hexo-theme-aero-dual" target="_blank" rel="noopener">https://github.com/levblanc/hexo-theme-aero-dual</a><br>查看它的readme.md<br>安装该主题步骤如下：</p>
 <ol>
-<li>选择排序说明</li>
-</ol>
-<p>选择排序的主要思想是：</p>
-<ol>
-<li>声明一个新的数组作为排序好的数组的容器。</li>
-<li>每次对现有数组进行最大值或最小值查找（根据需要），将查找到的值顺序添加到新数组中，并将其从原数组中剔除。</li>
-<li><p>重复第二步骤直到原数组的长度为一，即可停止，最后得到的新数组则是排序好的数组。</p>
+<li>clone主题到themes文件夹下，命令如下<br>$ git clone <a href="https://github.com/levblanc/hexo-theme-aero-dual.git" target="_blank" rel="noopener">https://github.com/levblanc/hexo-theme-aero-dual.git</a> themes/aero-dual</li>
+<li><p>在你的config.yml 文件中改变你的theme配置为 aero-dual<br>theme: aero-dual</p>
 </li>
-<li><p>举例说明</p>
+<li><p>执行命令hexo clean 清楚原来主题文件，再执行hexo g重新生成相关文件。就完成主题的更改了。</p>
 </li>
 </ol>
-<p>1）音乐播放器都会有很多统一或自己的排行榜，他就需要根据音乐的播放量或者唱片销量进行排序，然后对应显示。</p>
-<ol start="3">
-<li>代码说明</li>
-</ol>
-<p>下面我们先写一个用于查找最小值的方法：<br>function findSmallest(arr){<br>var smallest = arr[0];<br>var smallest_index = 0;<br>for(var i=0;i arr[i]){<br>smallest = arr[i];<br>smallest_index=i;<br>}<br>}<br>return smallest_index;<br>}<br>利用findSmallest方法实现选择排序方法：<br>var newArr = [];<br>function selectionSort(arr){<br>if(arr.length &gt;0){<br>smallest = findSmallest(arr);<br>newArr.push(arr[smallest]);<br>arr.splice(smallest,1);<br>selectionSort(arr);<br>}<br>return newArr;<br>}<br>var arr = [3,5,7,9,22,4,66,2,77];<br>console.log(selectionSort(arr));</p>
-<ol start="4">
-<li>结论</li>
-</ol>
-<p>选择排序的方法是非常容易理解的，在数据量不大的情况下，可以使用，如果对效率有着严格要求的话，建议使用时间复杂度更低的算法。</p>
+<p>如果执行完相关命令出现白页现象，请重新检查第二步是否配置正确。<br>你也来尝试更换你喜欢的主题吧～～！</p>
 <hr>
 <p>cr.tanym</p>
 
