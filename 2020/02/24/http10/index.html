@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="图解HTTP 第十章总结">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">图解HTTP 第十章总结</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-02-24</span>
+            <span class="time">19:30:22</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/http/">http</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/http/">#http</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>在web刚出现时，我们只能浏览那些页面央视简单的内容。如今，web使用各种各样的技术，来呈现丰富多彩的内容。<br><a id="more"></a></p>
+<h1 id="构建web内容的技术（第十章）"><a href="#构建web内容的技术（第十章）" class="headerlink" title="构建web内容的技术（第十章）"></a>构建web内容的技术（第十章）</h1><p><br></p>
+<h3 id="10-1-HTML"><a href="#10-1-HTML" class="headerlink" title="10.1 HTML"></a>10.1 HTML</h3><h4 id="10-1-1-web页面几乎全由html构建"><a href="#10-1-1-web页面几乎全由html构建" class="headerlink" title="10.1.1 web页面几乎全由html构建"></a>10.1.1 web页面几乎全由html构建</h4><p>html（hypertext Markup Language）超文本标记语言。</p>
+<h4 id="10-1-2-html版本"><a href="#10-1-2-html版本" class="headerlink" title="10.1.2 html版本"></a>10.1.2 html版本</h4><p>html5 是目前最新版本</p>
+<h4 id="10-1-3-设计应用"><a href="#10-1-3-设计应用" class="headerlink" title="10.1.3 设计应用"></a>10.1.3 设计应用</h4><p>css （cascading style sheets）层叠样式表。css控制浏览器页面外观。</p>
+<h3 id="10-2-动态html"><a href="#10-2-动态html" class="headerlink" title="10.2 动态html"></a>10.2 动态html</h3><h4 id="10-2-1-让web页面动起来的动态html"><a href="#10-2-1-让web页面动起来的动态html" class="headerlink" title="10.2.1  让web页面动起来的动态html"></a>10.2.1  让web页面动起来的动态html</h4><p>动态html指客户端脚本语言讲静态的html内容变成动态的技术的总称，通过调用客户端脚本语言javascript，实现对web页面的动态改造。</p>
+<h4 id="10-2-2-更易控制html的dom"><a href="#10-2-2-更易控制html的dom" class="headerlink" title="10.2.2 更易控制html的dom"></a>10.2.2 更易控制html的dom</h4><p>DOM 是用以操作html文档和xml文档的api。使用dom将html内的元素当作对象操作。</p>
+<h3 id="10-3-web应用"><a href="#10-3-web应用" class="headerlink" title="10.3 web应用"></a>10.3 web应用</h3><h4 id="10-3-1-通过web提供功能的web应用"><a href="#10-3-1-通过web提供功能的web应用" class="headerlink" title="10.3.1 通过web提供功能的web应用"></a>10.3.1 通过web提供功能的web应用</h4><p>web应用是指通过web功能提供的应用程序。</p>
+<h4 id="10-3-2-与web服务器及程序协作的CGI"><a href="#10-3-2-与web服务器及程序协作的CGI" class="headerlink" title="10.3.2 与web服务器及程序协作的CGI"></a>10.3.2 与web服务器及程序协作的CGI</h4><p>CGI （Common Gateway Interface）通用网关接口。是指web服务器在接收到客户端发送过来的请求后转发给程序的一组机制。</p>
+<h4 id="10-3-3-因java而普及的servlet"><a href="#10-3-3-因java而普及的servlet" class="headerlink" title="10.3.3 因java而普及的servlet"></a>10.3.3 因java而普及的servlet</h4><p>servlet是一种能在服务器上创建动态内容的程序。是用java语言实现的一个借口，属于面向企业级java的一部分。Servlet运行环境叫做web容器或servlet容器。Servlet运行在与web服务器相同的进程中，因此受到的负载较小。</p>
+<h3 id="10-4-数据发布的格式及语言"><a href="#10-4-数据发布的格式及语言" class="headerlink" title="10.4 数据发布的格式及语言"></a>10.4 数据发布的格式及语言</h3><h4 id="10-4-1-可拓展标记语言"><a href="#10-4-1-可拓展标记语言" class="headerlink" title="10.4.1 可拓展标记语言"></a>10.4.1 可拓展标记语言</h4><p>XML （eXtensible Markup Language，可扩展标记语言）是一种可按应用目标进行扩展的通用标记语言。旨在通过使用 XML，是互联网数据共享变得更加容易。<br>XML 和 HTML 一样，使用标签构成树形结构，并且可自定义扩展标签。<br>从 XML 文档中读取数据比起 HTML 更为简单。由于 XML 的结构基本上都是用标签分割而成的树形结构，因此通过语法分析器（Parser）的解析功能解析 XML 结构并取出数据元素，可更容易的对数据进行读取。</p>
+<h4 id="10-4-2-发布更新信息的RSS-Atom"><a href="#10-4-2-发布更新信息的RSS-Atom" class="headerlink" title="10.4.2 发布更新信息的RSS/Atom"></a>10.4.2 发布更新信息的RSS/Atom</h4><p>RSS（简易信息聚合，也叫聚合内容）和 Atom 都是发布新闻或博客日志等更新信息文档的格式的总称。两者都用到了 XML。<br>RSS 有以下版本：</p>
+<ul>
+<li>RSS 0.9（RDF Site Summary）： 最初的 RSS 版本。</li>
+<li>RSS 0.91（Rich Site Summary）： 在 RSS0.9的基础上扩展元素。非 RDF 规格，使用 XML 方式编写。</li>
+<li>RSS 1.0（RDF Site Summary）： RSS规格正处于混乱状态。</li>
+<li>RSS 2.0（Really Simple Syndication）： 非 RSS 1.0 路线。增加支持 RSS0.91 的兼容性。</li>
+<li>Atom 具有以下两种标准。</li>
+<li>Atom 供稿格式（Atom Syndication Format）：为发布内容而制定的网站消息来源格式。</li>
+<li>Atom 出版协定（Atom Publishing Protocol）： 为 Web 上内容的新增或修改而制定的协议。<h4 id="10-4-3-javascript-衍生的轻量级易用JSON"><a href="#10-4-3-javascript-衍生的轻量级易用JSON" class="headerlink" title="10.4.3 javascript 衍生的轻量级易用JSON"></a>10.4.3 javascript 衍生的轻量级易用JSON</h4>JSON（JavaScript Object Notation）是一种以 JavaScript 的对象表示法为基础的轻量级数据标记语言。<br>能够处理的数据类型有 false/null/true/对象/数组/数字/字符串 这 7 种类型。<br>示例:<br>{“name”: “Web Application Security”, “num”: “TR001”}</li>
+</ul>
+<hr>
+<p>cr.tanym</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
