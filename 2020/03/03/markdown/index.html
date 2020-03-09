@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="md 数据格式">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">md 数据格式</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-03-03</span>
+            <span class="time">15:57:14</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/markdown/">markdown</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/markdown/">#markdown</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>在写博客的过程中，需要用到很多常用的md语法。以下列举出一些常用的md语法。<br><a id="more"></a></p>
+<h4 id="1-正文"><a href="#1-正文" class="headerlink" title="1 正文"></a>1 正文</h4><pre><code>markdown 是支持html以及css样式代码的，也可以按照普通文档去写，markdown文档的换行也和HTML是类似的，你敲一个换行符他会当做什么都没发生，想要换行你可以使用HTML的标签或者是两段文字中间空一行。
+</code></pre><h4 id="2标题"><a href="#2标题" class="headerlink" title="2标题"></a>2标题</h4><p>使用n个#加一个空格表示n级标题。<br>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br></pre></td></tr></table></figure>
+<h4 id="3列表"><a href="#3列表" class="headerlink" title="3列表"></a>3列表</h4><ul>
+<li><p>无序列表<br>使用<em>加一个空格表示，还可以使用 + - 表示，和 </em> 是一样的。建议在文档中使用自己喜欢的一种，而且在一组列表中不要混用多种标签，这样在不同的解释器中可能会被解释成不同的列表组。<br>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 1 </span><br><span class="line">* 2</span><br><span class="line">- 3</span><br><span class="line">- 4</span><br><span class="line">+ 5</span><br><span class="line">+ 6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有序列表<br>使用正常的数字加一个.和空格表示。有序列表的序号有些解释器会根据第一行列表的数字顺序来递增的，还有一种会默认从1开始递增<br>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 1</span><br><span class="line">2. 2</span><br><span class="line">3. 3</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4区块引用"><a href="#4区块引用" class="headerlink" title="4区块引用"></a>4区块引用</h4><p>区块引用使用&gt;表示，为了代码的美观性，我们也在后面加一个空格表示。<br>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这是一个区块引用</span><br><span class="line">&gt; 这是另一个区块引用</span><br><span class="line">&gt;&gt; 这是一个二级嵌套引用</span><br><span class="line">&gt;&gt;&gt; 这是一个三级嵌套引用</span><br></pre></td></tr></table></figure>
+<h4 id="5分割线"><a href="#5分割线" class="headerlink" title="5分割线"></a>5分割线</h4><p>三个或者三个以上的 - 或者 * 都可以。</p>
+<h4 id="6-图片"><a href="#6-图片" class="headerlink" title="6 图片"></a>6 图片</h4><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br>图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</p>
+<h4 id="7-表格"><a href="#7-表格" class="headerlink" title="7 表格"></a>7 表格</h4><p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br></pre></td></tr></table></figure></p>
+<h4 id="8-代码块-语法："><a href="#8-代码块-语法：" class="headerlink" title="8 代码块 语法："></a>8 代码块 语法：</h4><p>单行代码：代码之间分别用一个反引号包起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`代码内容`</span><br></pre></td></tr></table></figure></p>
+<p>代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\```代码块```\</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>cr.tanym</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="tan y m">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="ios默认样式去除">
+  <meta property="og:title" content="小 T a n g？ 爱生活～～～">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:image" content="http://yoursite.com">
   
     <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
@@ -35,7 +35,8 @@
 </head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -43,7 +44,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">ios默认样式去除</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -88,53 +89,34 @@
   </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By tan y m</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2017-03-20</span>
-            <span class="time">15:57:14</span>
-          </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2020/03/03/markdown/" class="post-title">
+    md 数据格式
+  </a>
+  <div class="date text-muted">Posted on 2020-03-03 00:00:00</div>
+</div>
 
-<a href="/categories/ios/">ios</a>
-</span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
+      
 
-<a class="tag" href="/tags/ios/">#ios</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>ios默认对页面有独特的显示样式，如按钮圆角渐变等，但是开发是我们自己写的样式可能并不能接受它默认的样式，所以去除它是很必要。<br><a id="more"></a></p>
-<ol>
-<li>-webkit-appearance: none;<br>ios是webkit内核，所以在appearance前需要加-webkit来对其进行设置，<br>input[type=button]{<br>-webkit-appearance:none;<br>outline:none<br>}<br>上边代码段是对type为button的input控件设置appearance属性，所以ios手机上的button圆角等默认样式就消除了。</li>
-<li>ios手机会将它认为是手机号码的数字串，显示为默认的样式，并且设为拨号链接，可将telephone=no，则手机号码不被显示为拨号链接并且去除相关样式。</li>
-</ol>
-<hr>
-<p>cr.tanym</p>
-
-        </div>
-      </div>
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
