@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="图解HTTP 第十一章总结">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">图解HTTP 第十一章总结</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-02-26</span>
+            <span class="time">12:12:14</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/http/">http</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/http/">#http</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>互联网上的攻击大都将web站点作为目标。本章讲解具体有哪些攻击web站点的手段，以及攻击会造成怎样的影响。<br><a id="more"></a></p>
+<h1 id="web的攻击技术（第十一章）"><a href="#web的攻击技术（第十一章）" class="headerlink" title="web的攻击技术（第十一章）"></a>web的攻击技术（第十一章）</h1><p><br></p>
+<h3 id="11-1-针对web的攻击技术"><a href="#11-1-针对web的攻击技术" class="headerlink" title="11.1 针对web的攻击技术"></a>11.1 针对web的攻击技术</h3><p><img src="/images/http/http-11-1.png" alt=""></p>
+<h4 id="11-1-1-http不具备必要的安全功能"><a href="#11-1-1-http不具备必要的安全功能" class="headerlink" title="11.1.1 http不具备必要的安全功能"></a>11.1.1 http不具备必要的安全功能</h4><p>与最初的设计相比，现今几乎所有的 Web 网站都会使用会话（session）管理、加密处理等安全性方面的功能，而 HTTP 协议并不具备这些功能。<br>整体上看，HTTP 就是一个通用的单纯协议机制，因此它具备较多优势，但是在安全性方面呈劣势。<br>开发者需自行设计并开发认证及会话管理功能来满足 Web 应用的安全，但是自行设计会出现各种形形色色的实现，安全等级并不完备。</p>
+<h4 id="11-1-2-在客户端即可篡改请求"><a href="#11-1-2-在客户端即可篡改请求" class="headerlink" title="11.1.2 在客户端即可篡改请求"></a>11.1.2 在客户端即可篡改请求</h4><p>在 Web 应用中，从浏览器那接收到的 HTTP 请求的全部内容，都可以在客户端自由的变更、篡改。所以 Web 应用可能会接收到与预期数据不相同的内容。<br>在 HTTP 请求报文内加载攻击代码，就能发起对 Web 应用的攻击。<br><img src="/images/http/http-11-2.png" alt=""></p>
+<h4 id="11-1-3-针对web应用的攻击模式"><a href="#11-1-3-针对web应用的攻击模式" class="headerlink" title="11.1.3 针对web应用的攻击模式"></a>11.1.3 针对web应用的攻击模式</h4><p>对 Web 应用的攻击模式有以下两种。</p>
+<ol>
+<li>主动攻击</li>
+<li>被动攻击</li>
+</ol>
+<ul>
+<li>以服务器为目标的主动攻击<br>主动攻击（active attack）是指攻击者通过直接访问 Web 应用，把攻击代码传入的攻击模式。由于该模式是直接针对服务器上的资源进行攻击，因此攻击者需要能够访问到那些资源。<br>主动攻击模式里具有代表性的攻击是 SQL 注入攻击和 OS 命令注入攻击。<br><img src="/images/http/http-11-3.png" alt=""></li>
+<li>以服务器为目标的被动攻击<br>被动攻击（passive attack）是指利用圈套策略执行攻击代码的攻击模式。在被动攻击过程中，攻击者不直接对目标 Web 应用访问发起攻击。<br>被动攻击通常的攻击模式入如下：</li>
+</ul>
+<ol>
+<li>攻击者诱使用户触发已设置好的陷阱，而陷阱会启动发送已嵌入攻击代码的 HTTP 请求。</li>
+<li>当用户不知不觉中招后，用户的浏览器或邮件客户端就会触发这个请求。</li>
+<li>中招后的用户更浏览器会把含有攻击代码的 HTTP 请求发送给作为攻击目标的 Web 应用，运行攻击代码。</li>
+<li>执行完攻击代码，存在安全漏洞的 Web 应用会称为攻击者的跳板，可能导致用户所持有的 Cookie 等个人信息被窃取。<br>被动攻击模式中具有代表性的攻击是跨站脚本攻击和跨站点请求伪造。<br><img src="/images/http/http-11-4.png" alt=""></li>
+</ol>
+<p>利用被动攻击，可发起对原本从互联网上无法直接访问的企业内网等网络的攻击。<br><img src="/images/http/http-11-5.png" alt=""></p>
+<h3 id="11-2-因输出值转义不完全引发的安全漏洞"><a href="#11-2-因输出值转义不完全引发的安全漏洞" class="headerlink" title="11.2 因输出值转义不完全引发的安全漏洞"></a>11.2 因输出值转义不完全引发的安全漏洞</h3><p>实施 Web 应用的安全对策可大致分为以下两部分：</p>
+<ul>
+<li>客户端的验证</li>
+<li>Web 应用端（服务器端）的验证</li>
+<li>输入值验证</li>
+<li>输出值转义<br><img src="/images/http/http-11-6.png" alt=""></li>
+</ul>
+<p>多数情况下采用 JavaScript 在客户端验证数据。保留客户端验证数据只是为了尽早的辨识输入错误，起到提供 UI 的作用。<br>输入值验证通常是指检查是否是符合系统业务逻辑的数值或检查字符编码等预防对策。<br>针对输出做值转义处理是一项至关重要的安全策略。当输出值转义不完全时，会因触发攻击者传入的攻击代码，而给输出对象带来损害。</p>
+<h4 id="11-2-1-跨站脚本攻击"><a href="#11-2-1-跨站脚本攻击" class="headerlink" title="11.2.1 跨站脚本攻击"></a>11.2.1 跨站脚本攻击</h4><p>跨站脚本攻击（Cross-Site Scripting，XSS）是指通过存在安全漏洞的 Web 网站注册用户的浏览器内运行非法的 HTML 标签或者 JavaScript 进行的一种攻击。<br>跨站脚本攻击有可能造成以下影响。</p>
+<ul>
+<li>利用虚假输入表单骗取用户个人信息</li>
+<li>利用脚本窃取用户的 Cookie 值，被害者在不知情的情况下，帮助攻击者发送恶意请求</li>
+<li>显示伪造的文章或图片<br>XSS 是攻击者利用预先设置的陷阱触发的被动攻击。<br>跨站脚本攻击属于被动攻击模式，因此攻击者会事先布置 好用于攻击的陷阱。<h4 id="11-2-2-sql注入攻击"><a href="#11-2-2-sql注入攻击" class="headerlink" title="11.2.2 sql注入攻击"></a>11.2.2 sql注入攻击</h4>会执行非法 SQL 的 SQL 注入攻击。<br>SQL 注入（SQL Injection） 是指针对 Web 应用使用的数据库，通过运行非法的 SQL 而产生的攻击。可能会导致个人信息及机密信息的泄漏。<br>SQL 注入攻击可能会造成以下等影响。</li>
+<li>非法查看或篡改数据库内的数据</li>
+<li>规避认证</li>
+<li>执行和数据库服务器业务关联的程序<br>SQL 注入是攻击者将 SQL 语句改变成开发者意想不到的形式以达到破坏结构的攻击。<h4 id="11-2-3-os命令注入攻击"><a href="#11-2-3-os命令注入攻击" class="headerlink" title="11.2.3 os命令注入攻击"></a>11.2.3 os命令注入攻击</h4>OS 命令注入攻击（OS Command Injection）是指通过 Web 应用，执行非法的操作系统命令达到攻击的目的。只要在能调用 Shell 函数的地方就有存在被攻击的风险。<br>通过 OS 注入攻击可执行 OS 上安装着的各种程序。<h4 id="1-2-4-http首部注入攻击"><a href="#1-2-4-http首部注入攻击" class="headerlink" title="1.2.4 http首部注入攻击"></a>1.2.4 http首部注入攻击</h4>HTTP 首部注入攻击（HTTP Header Injection）是指攻击者通过在响应首部字段内插入换行，添加任意响应首部或主体的一种攻击。属于被动攻击模式。<br>向首部主体内添加内容的攻击称为 HTTP 响应截断攻击（HTTP Response Splitting Attack）。<br>HTTP 首部注入攻击可能会造成以下一些影响。</li>
+<li>设置任何 Cookie 信息</li>
+<li>重定向至任意 URL</li>
+<li>显示任意的主体（HTTP 响应截断攻击）<br>滥用 HTTP/1.1 中汇集多响应返回功能，会导致缓存服务器对任意内容进行缓存操作。这种攻击称为缓存污染。<h4 id="11-2-5邮件首部注入攻击"><a href="#11-2-5邮件首部注入攻击" class="headerlink" title="11.2.5邮件首部注入攻击"></a>11.2.5邮件首部注入攻击</h4>邮件首部注入（Mail Header Injection）是指 Web 应用中的邮件发送功能，攻击者通过向邮件首部 TO 或 Subject 内任意添加非法内容发起的攻击。利用存在安全漏洞的 Web 网站，可对任意邮件地址发送广告邮件或病毒邮件。<h4 id="11-2-6目录遍历攻击"><a href="#11-2-6目录遍历攻击" class="headerlink" title="11.2.6目录遍历攻击"></a>11.2.6目录遍历攻击</h4>目录遍历（Directory Traversal）攻击是指对本无意公开的文件目录，通过非法截断其目录路径后，达成访问的目的的一种攻击。这种攻击有时也称为路径遍历（Path Traversal）攻击。<h4 id="11-2-7远程文件包含漏洞"><a href="#11-2-7远程文件包含漏洞" class="headerlink" title="11.2.7远程文件包含漏洞"></a>11.2.7远程文件包含漏洞</h4>远程文件包含漏洞（Remote File Inclusion）是指当部分脚本内容需要从其他文件读入时，攻击者利用指定外部服务器的 URL 充当依赖文件，让脚本读取之后，就可运行任意脚本的一种攻击。<h3 id="11-3-因设置或设计上的缺陷引发的安全漏洞"><a href="#11-3-因设置或设计上的缺陷引发的安全漏洞" class="headerlink" title="11.3 因设置或设计上的缺陷引发的安全漏洞"></a>11.3 因设置或设计上的缺陷引发的安全漏洞</h3><h4 id="11-3-1-强制浏览"><a href="#11-3-1-强制浏览" class="headerlink" title="11.3.1 强制浏览"></a>11.3.1 强制浏览</h4>强制浏览（Forced Browsing）安全漏洞是指，从安置在 Web 服务器的公开目录下的文件中，浏览那些原本非自愿公开的文件。<br>强制浏览可能会造成以下一些影响。</li>
+<li>泄漏顾客的个人信息等重要情报</li>
+<li>泄漏原本需要具有访问权限的用户才可以查阅的内容</li>
+<li>泄漏未连到外界的文件<h4 id="11-3-2不正确的错误信息处理"><a href="#11-3-2不正确的错误信息处理" class="headerlink" title="11.3.2不正确的错误信息处理"></a>11.3.2不正确的错误信息处理</h4>不正确的错误消息处理（Error Handling Vulnerability）的安全漏洞是指，Web 应用的错误信息包含对攻击者有用的信息。与 Web 应用有关的主要错误信息如下所示。</li>
+<li>Web 应用抛出的错误信息</li>
+<li>数据库等系统抛出的错误信息<br>系统抛出的错误主要集中在以下几个方面。</li>
+<li>PHP 或 ASP 等脚本错误</li>
+<li>数据库或中间件的错误</li>
+<li>Web 服务器的错误<br>各系统应对详细的错误消息进行抑制设定，或使用自定义用户消息，以避免某些错误消息给攻击者以启发。<h4 id="11-3-3开放重定向"><a href="#11-3-3开放重定向" class="headerlink" title="11.3.3开放重定向"></a>11.3.3开放重定向</h4>开放重定向（Open Redirect）是一种对指定的任意 URL 作重定向跳转的功能。<br>可信度高的 Web 网站如果开放重定向功能，则很有可能被攻击者选中并用来作为钓鱼攻击的跳板。<h3 id="11-4-因会话管理疏忽引发的安全漏洞"><a href="#11-4-因会话管理疏忽引发的安全漏洞" class="headerlink" title="11.4 因会话管理疏忽引发的安全漏洞"></a>11.4 因会话管理疏忽引发的安全漏洞</h3>会话管理就是用来管理用户状态的必备功能，但是如果在会话管理上有所疏忽，就会导致用户的认证状态被窃取等后果。<h4 id="11-4-1-会话劫持"><a href="#11-4-1-会话劫持" class="headerlink" title="11.4.1 会话劫持"></a>11.4.1 会话劫持</h4>会话劫持（Session Hijack）是指攻击者通过某种手段拿到了用户的会话 ID，并非法使用此会话 ID 伪装成用户，达到攻击的目的。<br><img src="/images/http/http-11-7.png" alt=""></li>
+</ul>
+<p>具备认证功能的 Web 应用，使用会话 ID 的会话管理机制，作为认证管理状态的主流方式。会话 ID 中记录客户端的 Cookie 等消息，服务器会将会话 ID 与认证状态进行一对一匹配管理。<br>攻击者可能会获得会话 ID 的几种途径如下所示。</p>
+<ul>
+<li>通过非正规的生成方法推测会话 ID</li>
+<li>通过窃听或 XSS 攻击盗取会话 ID</li>
+<li>通过会话固定攻击（Session Fixation）强行获取会话 ID<h4 id="11-4-2-会话固定攻击"><a href="#11-4-2-会话固定攻击" class="headerlink" title="11.4.2 会话固定攻击"></a>11.4.2 会话固定攻击</h4>对以窃取目标会话 ID 为主动攻击收到的会话劫持而言，会话固定攻击（Session Fixation）攻击会强制用户使用攻击者指定的会话 ID，属于被动攻击。<h4 id="11-4-3-跨站点请求伪造"><a href="#11-4-3-跨站点请求伪造" class="headerlink" title="11.4.3 跨站点请求伪造"></a>11.4.3 跨站点请求伪造</h4>跨站点请求伪造（Cross-Site Request Forgeries，CSRF）攻击是指攻击者通过设置好的陷阱，强制对已完成认证的用户进行非预期的个人信息或设定信息等某些状态更新，属于被动攻击。<br>跨站点请求伪造有可能会造成以下等影响。</li>
+<li>利用已通过认证的用户权限更新设定信息等</li>
+<li>利用已通过认证的用户权限购买商品</li>
+<li>利用已通过认证的用户权限在留言板上发表评论<h3 id="11-5-其他安全漏洞"><a href="#11-5-其他安全漏洞" class="headerlink" title="11.5 其他安全漏洞"></a>11.5 其他安全漏洞</h3><h4 id="11-5-1-密码破解"><a href="#11-5-1-密码破解" class="headerlink" title="11.5.1 密码破解"></a>11.5.1 密码破解</h4>密码破解（Password Cracking）即算出密码，突破认证。<br>密码破解有以下两种手段。</li>
+<li>通过网络的密码试错</li>
+<li>对已加密密码的破解（指攻击者入侵系统，已获得加密或散列处理的密码数据的情况）<br>除去突破认证的攻击手段，还有 SQL 注入攻击逃避认证，跨站脚本攻击窃取密码信息等方法。<br>通过网络进行密码试错<br>对 Web 应用提供的认证功能，通过网络尝试候选密码进行的一种攻击。主要有以下两种方式。</li>
+<li>穷举法<br>穷举法（Brute-force Attack，又称暴力破解法）是指对所有密钥集合构成的密钥空间（Keyspace）进行穷举。用所有可行的候选密码对目标的密码系统试错，用以图片验证的一种攻击。</li>
+<li>字典攻击<br>字典攻击是指利用事先收集好的候选密码（经过各种组合方式后存入字典），枚举字典中的密码，尝试通过认证的一种攻击手段。<br><img src="/images/http/http-11-8.png" alt=""><br>对已加密密码的破解<br><img src="/images/http/http-11-9.png" alt=""><br>从加密过的数据中导出明文通常有以下几种方法</li>
+<li><p>通过穷举法字典攻击进行类推<br>针对密码使用散列函数进行加密处理的情况，采用和穷举法或字典攻击相同的手法，尝试调用相同的散列函数加密候选密码，然后把计算出的散列值与目标散列值进行匹配，类推出密码。<br><img src="/images/http/http-11-10.png" alt=""></p>
+</li>
+<li><p>彩虹表<br>彩虹表（Rainbow Table）是由明文密码及与之对应的散列值构成的一张数据库表，是一种通过事先制作庞大的彩虹表，可在穷举法·字典攻击等实际破解过程中缩短消耗时间的技巧。从彩虹表内搜索散列值就可以推导出对应的明文密码。<br><img src="/images/http/http-11-11.png" alt=""></p>
+</li>
+<li><p>拿到密钥<br>使用共享密钥加密方式对密码数据进行加密处理的情况下，如果通过某种手段拿到加密使用的密钥，也就可以对密码数据解密了。</p>
+</li>
+<li>加密算法的漏洞<br>考虑到加密算法本身可能存在的漏洞，利用该漏洞尝试解密也是一种可行的方法。<h4 id="11-5-2-点击劫持"><a href="#11-5-2-点击劫持" class="headerlink" title="11.5.2 点击劫持"></a>11.5.2 点击劫持</h4>点击劫持（Clickjacking）是指利用透明的按钮或链接做成陷阱，覆盖在 Web 页面之上。然后诱使用户在不知情的情况下，点击那个链接访问内容的一种攻击手段。这种行为又称界面伪装 （UI Redressing）。<br><img src="/images/http/http-11-12.png" alt=""></li>
+</ul>
+<h4 id="11-5-3-Dos攻击"><a href="#11-5-3-Dos攻击" class="headerlink" title="11.5.3 Dos攻击"></a>11.5.3 Dos攻击</h4><p>DoS 攻击（Denial of Service attack）是一种让运行中的服务呈停止状态的攻击。有时也叫做服务停止攻击或拒绝服务攻击。DoS 攻击的对象不仅限于 Web 网站，还包括网络设备及服务器等。<br>主要有以下两种方式实现 DoS 攻击。</p>
+<ul>
+<li>集中利用访问请求造成资源过载，资源用尽的同时，实际上服务也就呈现停止状态</li>
+<li>通过攻击安全漏洞是服务停止<br><img src="/images/http/http-11-13.png" alt=""></li>
+</ul>
+<p>多台计算机发起的 DoS 攻击称为 DDoS 攻击（Distuibuted Denial of Service attack）。DDoS 攻击通常利用那些感染病毒的计算机作为攻击者的攻击跳板</p>
+<h4 id="11-5-4-后门程序"><a href="#11-5-4-后门程序" class="headerlink" title="11.5.4 后门程序"></a>11.5.4 后门程序</h4><p>后门程序（Backdoor）是指开发设置的隐藏入口，可不按正常步骤使用受限功能，利用后门程序就能够使用原本受限制的功能。<br>通常的后门程序可分为以下 3 种类型。</p>
+<ul>
+<li>开发阶段作为debug调用的后门程序</li>
+<li>开发者为了自身利益植入的后门程序</li>
+<li>攻击者通过某种方法设置的后门程序</li>
+</ul>
+<hr>
+<p>cr.tanym</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
