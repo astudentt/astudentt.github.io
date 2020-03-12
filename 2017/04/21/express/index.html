@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-04-21</span>
-            <span class="time">23:47:38</span>
+            <span class="time">23:38:31</span>
           </span>
           
           <!--  Categories  -->
@@ -124,10 +124,16 @@
         <div class="post-content">
           <p>express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。<br><a id="more"></a></p>
 <ol>
-<li>安装ejs<br>使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。<br>npm install ejs</li>
-<li>app.js中引入ejs<br>var ejs = require(‘ejs’);</li>
-<li>设置html引擎<br>app.engine(‘html’, ejs.__express);</li>
-<li>设置视图引擎<br>app.set(‘view engine’, ‘html’);</li>
+<li>安装ejs</li>
+</ol>
+<p>使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。<br>npm install ejs</p>
+<ol>
+<li><p>app.js中引入ejs<br>var ejs = require(‘ejs’);</p>
+</li>
+<li><p>设置html引擎<br>app.engine(‘html’, ejs.__express);</p>
+</li>
+<li><p>设置视图引擎<br>app.set(‘view engine’, ‘html’);</p>
+</li>
 </ol>
 <p>重启服务就可以使用html模板咯~，在express搭建的服务器中，html引擎没有被配置，直接添加即可；视图引擎已配置，修改配置即可。</p>
 <hr>

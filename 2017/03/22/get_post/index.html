@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-22</span>
-            <span class="time">23:47:38</span>
+            <span class="time">23:38:31</span>
           </span>
           
           <!--  Categories  -->
@@ -122,12 +122,17 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>开发过程中，GET和POST方法我们会经常使用到，那么它们到底有什么不同呢？<br><a id="more"></a></p>
+          <p>开发过程中，GET和POST方法我们会经常使用到，那么它们到底有什么不同呢？</p>
+<a id="more"></a>
 <ol>
-<li>GET使用URL或cookie传参，而POST将数据放在BODY中。</li>
+<li>GET在浏览回退时是无害的，而post会再次提交请求。</li>
+<li>GET产生的URL地址可以被收藏，POST不可以。</li>
+<li>GET请求会被浏览器主动缓存，而POST不会。</li>
+<li>GET请求只能进行URL编码，而POST支持多种编码方式</li>
+<li>GET请求参数会被完整保存在浏览器历史记录里，POST参数不会被保留。</li>
 <li>GET的URL会有长度上的限制，而POST的数据几乎无限制。</li>
-<li>POSTt相对GET更加安全，因为在数据地址栏内不可见。</li>
-<li>GET请求的参数会保存在浏览器历史记录中。</li>
+<li>GET比POST更不安全，因为参数直接暴露在url上，所以不能暴露敏感信息。</li>
+<li>GET参数通过URL传递，POST放在REquest body中。</li>
 </ol>
 <hr>
 <p>cr.tanym</p>
