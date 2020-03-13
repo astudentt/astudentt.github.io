@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-14</span>
-            <span class="time">23:38:31</span>
+            <span class="time">23:45:48</span>
           </span>
           
           <!--  Categories  -->
@@ -129,10 +129,15 @@
 </ol>
 <p>git log命令显示从最近到最远的提交日志，你可以看到你的提交的版本，并且在你回退版本时起到非常重要的作用。你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，这是为了防止版本号和其他人有冲突。如果和svn一样使用1.2这样的数字，那么多人使用时，就会有冲突了。</p>
 <ol>
-<li><p>git reset<br>git reset –hard HEAD^<br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br>git reset –hard commit_id<br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+<li><p>git reset<br><code>git reset –hard HEAD^</code><br>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，再上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br><code>git reset –hard commit_id</code><br>只要你知道了commit_id的值，你就可以通过它来回退你的代码版本了，如果你已经回退到上一版本，但是发现你还是觉得之前最新的版本是你的爱的话，那么你可以使用<br>git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
 </li>
-<li><p>git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。<br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br>$ git status<br>On branch master<br>Untracked files:<br>(use “git add …” to include in what will be committed)<br>a.txt<br>nothing added to commit but untracked files present (use “git add” to track)<br>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。</p>
+<li><p>git status<br>git status是git中使用率非常高的语句，它是查看当前工作区状态的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>上面的语句告诉你当前分支的状态，没有需要提交的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Untracked files:</span><br><span class="line">(use “git add …” to include in what will be committed)</span><br><span class="line">a.txt</span><br><span class="line">nothing added to commit but untracked files present (use “git add” to track)</span><br></pre></td></tr></table></figure></p>
+<p>在你新加入了文件或者没有提交到本地分支的时候，你使用git status语句时就会遇到类似情况，提示你需要使用git add语句或者commit语句来添加以及提交。</p>
+<ol>
 <li><p>git add<br>git中有两个概念是很重要，工作区和暂存区，工作区（Working Directory），工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库（不要轻易修改）。git add把文件添加进去，实际上就是把文件修改添加到暂存区，暂存区会将所有的文件存起来，然后我们再通过git commit 命令一次性提交暂存区的所有修改，并提交到分支。</p>
 </li>
 <li><p>git commit<br>提交语句，一次性提交暂存区的所有修改，并提交到分支。在你修改文件之后，直接执行git commit语句进行提交。</p>
