@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-03-14</span>
-            <span class="time">23:45:48</span>
+            <span class="time">23:04:26</span>
           </span>
           
           <!--  Categories  -->
@@ -148,8 +148,12 @@
 </li>
 <li><p>git clone<br>在我们看博客的时候，博主们很喜欢，让你下载他们的源码来自己试验，你可能经常看到git clone语句，在词语后加入相应的地址，就可以要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
 </li>
-<li><p>git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。<br>$ git branch<br>master<br>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d</p>
+<li><p>git branch<br>这是一条显示本地全部分支的语句，分支相当于一个时间线，在开发过程中，每个开发人员会创建自己的分支，在自己的分支上进行开发，最后再合并到master分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">master</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>git branch 语句也可以用来创建分支。删除分支可以使用 git branch -d</p>
+<ol>
 <li><p>git checkout<br>git checkout 可以用来对不同的分支切换，git checkout master就是切换回master分支，checkout在合并分支中被频繁使用。</p>
 </li>
 <li><p>git merge<br>git merge命令用于合并指定分支到当前分支。因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。<br>这些就是一些常用的git语句，掌握好这些命令，就可以熟练运用git了。如果你对命令不太熟悉，你也可以安装图形化工具来管理哦。</p>
