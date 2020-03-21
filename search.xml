@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>防抖(debounce)与节流(throttle)</title>
+      <link href="/2020/03/21/throttle_debounce/"/>
+      <url>/2020/03/21/throttle_debounce/</url>
+      
+        <content type="html"><![CDATA[<p>防抖与节流都是现今web应用的常用技术，他的使用场景主要在我们对一些触发频率较高的事件进行监听的场景下。是能够节省资源优化性能的常用方式。</p><a id="more"></a><ol><li>防抖(debounce)</li></ol><ul><li>原理：一个连续操作中的处理，只触发一次，从而实现防抖动。</li><li>代码：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn, delay) &#123;</span><br><span class="line">    var timer;</span><br><span class="line">    return function () &#123;</span><br><span class="line">        var context = this;</span><br><span class="line">        var args = arguments;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">        timer = setTimeout(function () &#123;</span><br><span class="line">            fn.apply(context, args)</span><br><span class="line">        &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol><li>节流(throttle)</li></ol><ul><li>原理：一个连续操作中的处理，按照阀值时间间隔进行触发，从而实现节流。</li><li>代码：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn, delay) &#123;</span><br><span class="line">    let timer = null,</span><br><span class="line">        remaining = 0,</span><br><span class="line">        previous = new Date();</span><br><span class="line"></span><br><span class="line">    return function () &#123;</span><br><span class="line">        let now = new Date(),</span><br><span class="line">            remaining = now - previous,</span><br><span class="line">            args = arguments,</span><br><span class="line">            context = this;</span><br><span class="line"></span><br><span class="line">        if (remaining &gt;= delay) &#123;</span><br><span class="line">            if (timer) &#123;</span><br><span class="line">                clearTimeout(timer);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            fn.apply(context, args);</span><br><span class="line">            previous = now;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (!timer) &#123;</span><br><span class="line">                timer = setTimeout(function () &#123;</span><br><span class="line">                    fn.apply(context, args);</span><br><span class="line">                    previous = new Date();</span><br><span class="line">                &#125;, delay - remaining);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="一个连续操作中的处理，只触发一次，从而实现防抖动。"><a href="#一个连续操作中的处理，只触发一次，从而实现防抖动。" class="headerlink" title="一个连续操作中的处理，只触发一次，从而实现防抖动。"></a>一个连续操作中的处理，只触发一次，从而实现防抖动。</h2><p>cr.tanym</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> js </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何更换hexo主题</title>
       <link href="/2020/03/04/hexo-themes/"/>
       <url>/2020/03/04/hexo-themes/</url>
