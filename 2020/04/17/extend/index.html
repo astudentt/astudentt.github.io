@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="js 继承方式">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">js 继承方式</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-04-17</span>
+            <span class="time">18:27:43</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/js/">js</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/js/">#js</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>为什么要有继承实现？</p>
+<p>js是面向对象的语言，在创建过程中受到了java面向对象思想的影响，因为js语言中所有数据类型对象都是object，为了使对象跟对象之间有所关联所以设计了继承模式。继承可以大大减少代码量，并且可以让代码具有更强的可读性和可维护性。</p>
+<p>继承相关的基础知识</p>
+<ul>
+<li><p>prototype</p>
+</li>
+<li><p>__proto__</p>
+</li>
+<li>原型、实例、构造函数的概念</li>
+</ul>
+<p>通过下列代码来实现基础的继承方式，先创建一个父类（供子类继承）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Father(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.shout = funciton() &#123;</span><br><span class="line">        alert(&apos;my name is &apos;+ name + &apos;, i am shouting~!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">  Father.prototype.eat = function(food) &#123;</span><br><span class="line">      alert(&apos;my name is &apos;+ name + &apos;, i am eating&apos; + food)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ES5继承的方式</p>
+<ol>
+<li>构造函数继承</li>
+</ol>
+<p>原理： 复制父类的实例属性给子类</p>
+<p>实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Child() &#123;</span><br><span class="line">    Father.call(this, arguments);</span><br><span class="line">&#125;</span><br><span class="line">const childObj = new Child();</span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>解决了子类构造函数向父类构造函数中传递参数</li>
+<li>可以实现多继承（call或者apply多个父类）</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>方法都在构造函数中定义，无法复用</li>
+<li>不能继承原型属性/方法，只能继承父类的实例属性和方法</li>
+</ul>
+<ol start="2">
+<li>原型链继承</li>
+</ol>
+<p>原理： 父类的实例作为子类的原型</p>
+<p>实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Child() &#123;</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = new Father();</span><br><span class="line">Child.prototype.name = &apos;child&apos;</span><br><span class="line">const childObj = new Child();</span><br></pre></td></tr></table></figure></p>
+<p>优点：简单易于实现，父类的新增的实例与属性子类都能访问<br>缺点：</p>
+<ul>
+<li>可以在子类中增加实例属性，如果要新增加原型属性和方法需要在new 父类构造函数的后面</li>
+<li>无法实现多继承</li>
+<li>创建子类实例时，不能向父类构造函数中传参数</li>
+</ul>
+<ol start="3">
+<li>组合继承</li>
+</ol>
+<p>原理： 调用父类构造函数，继承父类的属性，通过将父类实例作为子类原型，实现函数复用</p>
+<p>实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Child(name) &#123;</span><br><span class="line">    Father.call(this);</span><br><span class="line">    this.name = name || &apos;child&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = new Father();</span><br><span class="line">Child.prototype.constructor = Child;</span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>函数可以复用</li>
+<li>不存在引用属性问题</li>
+<li>可以继承属性和方法，并且可以继承原型的属性和方法</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>调用了两次父类构造函数（耗内存）</li>
+</ul>
+<ol start="4">
+<li>寄生组合继承</li>
+</ol>
+<p>原理： 通过寄生的方式来修复组合式继承的不足，完美的实现继承也是es中最常用的方式</p>
+<p>实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Child(name) &#123;</span><br><span class="line">    Father.call(this);</span><br><span class="line">    this.name = name || &apos;child&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function extend(suberClass, superClass) &#123;</span><br><span class="line">    var object = function (o) &#123;</span><br><span class="line">        var F = function () &#123; &#125;;</span><br><span class="line">        F.prototype = o;</span><br><span class="line">        return new F();</span><br><span class="line">    &#125;; //object作用就是拷贝一份父对象</span><br><span class="line"></span><br><span class="line">    suberClass.prototype = object(superClass.prototype);</span><br><span class="line">    suberClass.prototype.constructor = suberClass; //强制constructor指向suberClass</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extend(Child, Father)</span><br><span class="line">const childObj = new Child();</span><br></pre></td></tr></table></figure></p>
+<p>寄生组合继承是ES5 最常用的继承方式，也是最优的继承方式。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
