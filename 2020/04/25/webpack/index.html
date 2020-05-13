@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="tan y m">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="webpack 编译原理 及其优化方案">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>小 T a n g？ 爱生活～～～</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">webpack 编译原理 及其优化方案</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By tan y m</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-04-25</span>
+            <span class="time">15:05:17</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/webpack/">webpack</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/webpack/">#webpack</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h2>webpack是什么？</h2>
+
+<p>webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。</p>
+<p> 当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p>
+<p> webpack有四个核心概念：</p>
+<ul>
+<li>入口(entry)</li>
+</ul>
+<p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
+<p>每个依赖项随即被处理，最后输出到称之为 bundles 的文件中</p>
+<ul>
+<li>输出(output)</li>
+</ul>
+<p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。你可以通过在配置中指定一个 output 字段，来配置这些处理过程.</p>
+<ul>
+<li>loader</li>
+</ul>
+<p>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
+<ul>
+<li>插件(plugins)</li>
+</ul>
+<p>插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。</p>
+<h2>webpack 模式（mode）</h2>
+
+<p>提供 mode 配置选项，告知 webpack 使用相应模式的内置优化。<br><b>用法：</b></p>
+<p>在配置中使用mode字段配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &apos;production&apos;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>mode为production 生产环境是 webpack会开启内置优化。</p>
+<ol>
+<li>会将 process.env.NODE_ENV 的值设为 production</li>
+<li>启用  <ul>
+<li>FlagDependencyUsagePlugin（标记没有用到的依赖，这个插件无法通过webpack获取，我只能通过强行导入webpack/lib下的class文件来导入）</li>
+<li>FlagIncludedChunksPlugin（chunks就是所有引用模块的id）</li>
+<li>ModuleConcatenationPlugin（作用域提升）</li>
+<li>NoEmitOnErrorsPlugin（防止程序报错，就算有错误也继续编译）</li>
+<li>OccurrenceOrderPlugin（按照chunk引用次数来安排出现顺序，因为这让经常引用的模块和chunk拥有更小的id）</li>
+<li>SideEffectsFlagPlugin（用于处理tree shaking的,tree shaking，sideEffect这个插件的作用就是，如果当前的模块没有引用，而且package.json中的sideEffects为false，那么打包的时候就可以将此包剔除）</li>
+<li>UglifyJsPlugin(混淆&amp;压缩).</li>
+</ul>
+</li>
+</ol>
+<p>mode为 development 时 开发环境的默认plugin配置。</p>
+<ol>
+<li>会将 process.env.NODE_ENV 的值设为 development</li>
+<li>启用  NamedModulesPlugin（模块命名）和NamedChunksPlugin（chunks命名）</li>
+</ol>
+<h2>loader 和 plugin的区别 </h2> 
+
+<p>对于loader，它就是一个转换器，将A文件进行编译形成B文件，这里操作的是文件，比如将A.scss或A.less转变为B.css，单纯的文件转换过程</p>
+<p>plugin是一个扩展器，它丰富了wepack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务。</p>
+<ul>
+<li>如何手写一个loader</li>
+</ul>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function (src) &#123;</span><br><span class="line">  if (src) &#123;</span><br><span class="line">    console.log(&apos;--- reverse-loader input:&apos;, src)</span><br><span class="line">    src = src.split(&apos;&apos;).reverse().join(&apos;&apos;)</span><br><span class="line">    console.log(&apos;--- reverse-loader output:&apos;, src)</span><br><span class="line">  &#125;</span><br><span class="line">  return src;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>如何手写一个plugin</li>
+</ul>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class MyPlugin &#123;</span><br><span class="line">  // 构造方法</span><br><span class="line">  constructor (options) &#123;</span><br><span class="line">    console.log(&apos;MyPlugin constructor:&apos;, options)</span><br><span class="line">  &#125;</span><br><span class="line">  // 应用函数</span><br><span class="line">  apply (compiler) &#123;</span><br><span class="line">    // 绑定钩子事件</span><br><span class="line">    compiler.plugin(&apos;compilation&apos;, compilation =&gt; &#123;</span><br><span class="line">      console.log(&apos;MyPlugin&apos;)</span><br><span class="line">    ))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = MyPlugin</span><br></pre></td></tr></table></figure></p>
+<p>webpack 启动后，在读取配置的过程中会先执行 new MyPlugin(options) 初始化一个 MyPlugin 获得其实例。<br>在初始化 compiler 对象后，再调用 myPlugin.apply(compiler) 给插件实例传入 compiler 对象。<br>插件实例在获取到 compiler 对象后，就可以通过 compiler.plugin(事件名称, 回调函数) 监听到 Webpack 广播出来的事件。<br>并且可以通过 compiler 对象去操作 webpack。</p>
+<p><b>Compiler对象解析</b></p>
+<p>Compiler 对象包含了 Webpack 环境所有的的配置信息，包含 options，loaders，plugins 这些信息，这个对象在 Webpack 启动时候被实例化，它是全局唯一的，可以简单地把它理解为 Webpack 实例；</p>
+<p><b>Compilation对象解析</b></p>
+<p>Compilation 对象包含了当前的模块资源、编译生成资源、变化的文件等。当 Webpack 以开发模式运行时，每当检测到一个文件变化，一次新的 Compilation 将被创建。Compilation 对象也提供了很多事件回调供插件做扩展。通过 Compilation 也能读取到 Compiler 对象。</p>
+<p><b>Compiler 和 Compilation 的区别在于：</b></p>
+<p>Compiler 代表了整个 Webpack 从启动到关闭的生命周期，而 Compilation 只是代表了一次新的编译。</p>
+<p><b>事件流</b></p>
+<ul>
+<li>webpack 通过Tapable来组织这条复杂的生产线。</li>
+<li>webpack 的事件流机制保证了插件的有序性，使得整个系统扩展性很好。</li>
+<li>webpack 的事件流机制应用了观察者模式，和 Node.js 中的 EventEmitter 非常相似。</li>
+</ul>
+<p><b>webpack优化方案</b></p>
+<ol>
+<li>优化解析时间 - 开启多进程打包</li>
+</ol>
+<ul>
+<li>thread-loader（webpack4 官方推荐）</li>
+</ul>
+<ol start="2">
+<li>externals 非常用的可用cdn方式替换</li>
+<li>splitChunks 适宜的大小模块 DllPlugin</li>
+<li>减少访问请求数量 loader的合理配置 如 url loader</li>
+<li>webpack自身的优化</li>
+</ol>
+<ul>
+<li>tree-shaking</li>
+<li>mode 模式的相关优化</li>
+</ul>
+<ol start="6">
+<li>合理利用缓存（缩短连续构建时间，增加初始构建时间） cache-loader的合理配置</li>
+<li>优化搜索时间- 缩小文件搜索范围 减小不必要的编译工作 loader的include合理配置</li>
+<li>noParse<br>如果一些第三方模块没有AMD/CommonJS规范版本，可以使用 noParse 来标识这个模块，这样 Webpack 会引入这些模块，但是不进行转化和解析，从而提升 Webpack 的构建性能 ，例如：jquery 、lodash。</li>
+<li>抽离公共代码</li>
+</ol>
+<hr>
+<p>cr.tanym</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

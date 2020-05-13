@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="tan y m">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Express使用html模板">
+  <meta property="og:title" content="小 T a n g？ 爱生活～～～">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="小 T a n g？ 爱生活～～～">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:image" content="http://yoursite.com">
   
     <link rel="alternate" href="/atom.xml" title="小 T a n g？ 爱生活～～～" type="application/atom+xml">
@@ -35,7 +35,8 @@
 </head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -43,7 +44,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Express使用html模板</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -88,62 +89,34 @@
   </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By tan y m</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2017-04-21</span>
-            <span class="time">15:05:17</span>
-          </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2020/04/25/webpack/" class="post-title">
+    webpack 编译原理 及其优化方案
+  </a>
+  <div class="date text-muted">Posted on 2020-04-25 00:00:00</div>
+</div>
 
-<a href="/categories/js/">js</a>
-</span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
+      
 
-<a class="tag" href="/tags/js/">#js</a> <a class="tag" href="/tags/ejs/">#ejs</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>express默认使用jade模板，如果你需要html或者ejs的时候，就必须要手动配置了。<br><a id="more"></a></p>
-<ol>
-<li>安装ejs</li>
-</ol>
-<p>使用npm install 命令在项目根目录安装ejs.如果你的网速过慢也可以使用cnpm哦，会快很多。<br>npm install ejs</p>
-<ol>
-<li><p>app.js中引入ejs<br>var ejs = require(‘ejs’);</p>
-</li>
-<li><p>设置html引擎<br>app.engine(‘html’, ejs.__express);</p>
-</li>
-<li><p>设置视图引擎<br>app.set(‘view engine’, ‘html’);</p>
-</li>
-</ol>
-<p>重启服务就可以使用html模板咯~，在express搭建的服务器中，html引擎没有被配置，直接添加即可；视图引擎已配置，修改配置即可。</p>
-<hr>
-<p>cr.tanym</p>
-
-        </div>
-      </div>
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
