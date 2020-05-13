@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-04-25</span>
-            <span class="time">15:05:17</span>
+            <span class="time">15:35:40</span>
           </span>
           
           <!--  Categories  -->
@@ -215,6 +215,9 @@
 <li>noParse<br>如果一些第三方模块没有AMD/CommonJS规范版本，可以使用 noParse 来标识这个模块，这样 Webpack 会引入这些模块，但是不进行转化和解析，从而提升 Webpack 的构建性能 ，例如：jquery 、lodash。</li>
 <li>抽离公共代码</li>
 </ol>
+<h2>Tapable </h2>
+
+<p>tapable 这个小型 library 是 webpack 的一个核心工具，但也可用于其他地方，以提供类似的插件接口。webpack 中许多对象扩展自 Tapable 类。这个类暴露 tap, tapAsync 和 tapPromise 方法，可以使用这些方法，注入自定义的构建步骤，这些步骤将在整个编译过程中不同时机触发。</p>
 <hr>
 <p>cr.tanym</p>
 
